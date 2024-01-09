@@ -1,0 +1,1952 @@
+<?xml version="1.0"?>
+<robot name="MultiRotor">
+    <link name="robot_base">
+        <inertial>
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.100000 -0.100000 0.350000" />
+            <inertia izz="0.21845310485839" iyz="-1.6170541315236e-09" iyy="0.10929486603107" ixz="8.164693730986e-10" ixy="-1.2095057479831e-17" ixx="0.10929486603107" />
+            <mass value="2.0480000972748" />
+        </inertial>
+        <collision name="MultiRotor">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.100000 -0.100000 0.350000" />
+            <geometry>
+                <box size="0.800000 0.800000 0.020000" />
+            </geometry>
+        </collision>
+        <visual name="Shape0">
+            <origin rpy="-1.570294 -1.570796 0.000000" xyz="0.000000 0.000000 0.380000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_Shape0_vis_1.dae" />
+            </geometry>
+            <material name="Shape0_material">
+                <color rgba="1.000000 1.000000 1.000000 1.0" />
+            </material>
+        </visual>
+        <visual name="Shape2">
+            <origin rpy="-1.570294 -1.570796 0.000000" xyz="0.000000 0.200000 0.380000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_Shape2_vis_1.dae" />
+            </geometry>
+            <material name="Shape2_material">
+                <color rgba="1.000000 1.000000 1.000000 1.0" />
+            </material>
+        </visual>
+        <visual name="Shape3">
+            <origin rpy="-1.570294 -1.570796 0.000000" xyz="0.000000 -0.200000 0.380000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_Shape3_vis_1.dae" />
+            </geometry>
+            <material name="Shape3_material">
+                <color rgba="1.000000 1.000000 1.000000 1.0" />
+            </material>
+        </visual>
+        <visual name="Shape4">
+            <origin rpy="-1.570294 -1.570796 0.000000" xyz="-0.200000 0.000000 0.380000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_Shape4_vis_1.dae" />
+            </geometry>
+            <material name="Shape4_material">
+                <color rgba="1.000000 1.000000 1.000000 1.0" />
+            </material>
+        </visual>
+        <visual name="Shape5">
+            <origin rpy="-1.570294 -1.570796 0.000000" xyz="0.200000 0.200000 0.380000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_Shape5_vis_1.dae" />
+            </geometry>
+            <material name="Shape5_material">
+                <color rgba="1.000000 1.000000 1.000000 1.0" />
+            </material>
+        </visual>
+        <visual name="Shape7">
+            <origin rpy="-1.570294 -1.570796 0.000000" xyz="0.200000 -0.200000 0.380000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_Shape7_vis_1.dae" />
+            </geometry>
+            <material name="Shape7_material">
+                <color rgba="1.000000 1.000000 1.000000 1.0" />
+            </material>
+        </visual>
+        <visual name="Shape6">
+            <origin rpy="-1.570294 -1.570796 0.000000" xyz="-0.200000 0.200000 0.380000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_Shape6_vis_1.dae" />
+            </geometry>
+            <material name="Shape6_material">
+                <color rgba="1.000000 1.000000 1.000000 1.0" />
+            </material>
+        </visual>
+        <visual name="Shape8">
+            <origin rpy="-1.570294 -1.570796 0.000000" xyz="-0.200000 -0.200000 0.380000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_Shape8_vis_1.dae" />
+            </geometry>
+            <material name="Shape8_material">
+                <color rgba="1.000000 1.000000 1.000000 1.0" />
+            </material>
+        </visual>
+        <visual name="Shape9">
+            <origin rpy="-1.570294 -1.570796 0.000000" xyz="-0.400000 0.000000 0.380000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_Shape9_vis_1.dae" />
+            </geometry>
+            <material name="Shape9_material">
+                <color rgba="1.000000 1.000000 1.000000 1.0" />
+            </material>
+        </visual>
+        <visual name="Shape10">
+            <origin rpy="-1.570294 -1.570796 0.000000" xyz="-0.400000 0.200000 0.380000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_Shape10_vis_1.dae" />
+            </geometry>
+            <material name="Shape10_material">
+                <color rgba="1.000000 1.000000 1.000000 1.0" />
+            </material>
+        </visual>
+        <visual name="Shape11">
+            <origin rpy="-1.570294 -1.570796 0.000000" xyz="-0.400000 -0.200000 0.380000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_Shape11_vis_1.dae" />
+            </geometry>
+            <material name="Shape11_material">
+                <color rgba="1.000000 1.000000 1.000000 1.0" />
+            </material>
+        </visual>
+        <visual name="Shape12">
+            <origin rpy="-1.570294 -1.570796 0.000000" xyz="0.000000 -0.400000 0.380000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_Shape12_vis_1.dae" />
+            </geometry>
+            <material name="Shape12_material">
+                <color rgba="1.000000 1.000000 1.000000 1.0" />
+            </material>
+        </visual>
+        <visual name="Shape13">
+            <origin rpy="-1.570294 -1.570796 0.000000" xyz="0.200000 -0.400000 0.380000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_Shape13_vis_1.dae" />
+            </geometry>
+            <material name="Shape13_material">
+                <color rgba="1.000000 1.000000 1.000000 1.0" />
+            </material>
+        </visual>
+        <visual name="Shape14">
+            <origin rpy="-1.570294 -1.570796 0.000000" xyz="-0.200000 -0.400000 0.380000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_Shape14_vis_1.dae" />
+            </geometry>
+            <material name="Shape14_material">
+                <color rgba="1.000000 1.000000 1.000000 1.0" />
+            </material>
+        </visual>
+        <visual name="Shape15">
+            <origin rpy="-1.570294 -1.570796 0.000000" xyz="-0.400000 -0.400000 0.380000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_Shape15_vis_1.dae" />
+            </geometry>
+            <material name="Shape15_material">
+                <color rgba="1.000000 1.000000 1.000000 1.0" />
+            </material>
+        </visual>
+        <visual name="Shape1">
+            <origin rpy="-1.570294 -1.570796 0.000000" xyz="0.200000 0.000000 0.380000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_Shape1_vis_1.dae" />
+            </geometry>
+            <material name="Shape1_material">
+                <color rgba="1.000000 1.000000 1.000000 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller1">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable1" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="0.250000 -0.450000 0.380000" />
+    </joint>
+    <link name="propellerrespondable1">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable1">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller4">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable4" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="0.250000 -0.350000 0.380000" />
+    </joint>
+    <link name="propellerrespondable4">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable4">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller2">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable2" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="0.150000 -0.450000 0.380000" />
+    </joint>
+    <link name="propellerrespondable2">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable2">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller3">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable3" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="0.150000 -0.350000 0.380000" />
+    </joint>
+    <link name="propellerrespondable3">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable3">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body3">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody3_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody3_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller5">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable5" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="0.050000 -0.450000 0.380000" />
+    </joint>
+    <link name="propellerrespondable5">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable5">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body5">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody5_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody5_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller6">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable6" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.050000 -0.450000 0.380000" />
+    </joint>
+    <link name="propellerrespondable6">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable6">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller8">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable8" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="0.050000 -0.350000 0.380000" />
+    </joint>
+    <link name="propellerrespondable8">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable8">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller7">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable7" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.050000 -0.350000 0.380000" />
+    </joint>
+    <link name="propellerrespondable7">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable7">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller9">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable9" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="0.050000 -0.250000 0.380000" />
+    </joint>
+    <link name="propellerrespondable9">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable9">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller16">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable16" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="0.250000 -0.150000 0.380000" />
+    </joint>
+    <link name="propellerrespondable16">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable16">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller15">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable15" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="0.150000 -0.150000 0.380000" />
+    </joint>
+    <link name="propellerrespondable15">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable15">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller14">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable14" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="0.150000 -0.250000 0.380000" />
+    </joint>
+    <link name="propellerrespondable14">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable14">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body5">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody5_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody5_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller13">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable13" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="0.250000 -0.250000 0.380000" />
+    </joint>
+    <link name="propellerrespondable13">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable13">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller11">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable11" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.050000 -0.150000 0.380000" />
+    </joint>
+    <link name="propellerrespondable11">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable11">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body3">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody3_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody3_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller10">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable10" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.050000 -0.250000 0.380000" />
+    </joint>
+    <link name="propellerrespondable10">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable10">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller12">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable12" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="0.050000 -0.150000 0.380000" />
+    </joint>
+    <link name="propellerrespondable12">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable12">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller17">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable17" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.150000 -0.450000 0.380000" />
+    </joint>
+    <link name="propellerrespondable17">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable17">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body17">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody17_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody17_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller20">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable20" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.150000 -0.350000 0.380000" />
+    </joint>
+    <link name="propellerrespondable20">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable20">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body20">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody20_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody20_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller18">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable18" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.250000 -0.450000 0.380000" />
+    </joint>
+    <link name="propellerrespondable18">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable18">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body18">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody18_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody18_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller19">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable19" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.250000 -0.350000 0.380000" />
+    </joint>
+    <link name="propellerrespondable19">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable19">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body19">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody19_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody19_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller21">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable21" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.350000 -0.450000 0.380000" />
+    </joint>
+    <link name="propellerrespondable21">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable21">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body21">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody21_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody21_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller22">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable22" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.450000 -0.450000 0.380000" />
+    </joint>
+    <link name="propellerrespondable22">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable22">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body22">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody22_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody22_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller24">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable24" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.350000 -0.350000 0.380000" />
+    </joint>
+    <link name="propellerrespondable24">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable24">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body24">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody24_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody24_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller23">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable23" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.450000 -0.350000 0.380000" />
+    </joint>
+    <link name="propellerrespondable23">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable23">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body23">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody23_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody23_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller25">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable25" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.350000 -0.250000 0.380000" />
+    </joint>
+    <link name="propellerrespondable25">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable25">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body25">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody25_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody25_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller32">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable32" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.150000 -0.150000 0.380000" />
+    </joint>
+    <link name="propellerrespondable32">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable32">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body32">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody32_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody32_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller31">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable31" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.250000 -0.150000 0.380000" />
+    </joint>
+    <link name="propellerrespondable31">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable31">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body31">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody31_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody31_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller30">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable30" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.250000 -0.250000 0.380000" />
+    </joint>
+    <link name="propellerrespondable30">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable30">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body30">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody30_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody30_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller29">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable29" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.150000 -0.250000 0.380000" />
+    </joint>
+    <link name="propellerrespondable29">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable29">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body29">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody29_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody29_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller27">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable27" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.450000 -0.150000 0.380000" />
+    </joint>
+    <link name="propellerrespondable27">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable27">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body27">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody27_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody27_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller26">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable26" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.450000 -0.250000 0.380000" />
+    </joint>
+    <link name="propellerrespondable26">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable26">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body26">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody26_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody26_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller28">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable28" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.350000 -0.150000 0.380000" />
+    </joint>
+    <link name="propellerrespondable28">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable28">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body28">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody28_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody28_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller49">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable49" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="0.250000 -0.050000 0.380000" />
+    </joint>
+    <link name="propellerrespondable49">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable49">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body49">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody49_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody49_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller52">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable52" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="0.250000 0.050000 0.380000" />
+    </joint>
+    <link name="propellerrespondable52">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable52">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body52">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody52_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody52_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller50">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable50" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="0.150000 -0.050000 0.380000" />
+    </joint>
+    <link name="propellerrespondable50">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable50">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body50">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody50_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody50_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller51">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable51" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="0.150000 0.050000 0.380000" />
+    </joint>
+    <link name="propellerrespondable51">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable51">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body51">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody51_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody51_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller53">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable53" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="0.050000 -0.050000 0.380000" />
+    </joint>
+    <link name="propellerrespondable53">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable53">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body53">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody53_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody53_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller54">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable54" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.050000 -0.050000 0.380000" />
+    </joint>
+    <link name="propellerrespondable54">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable54">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body54">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody54_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody54_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller56">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable56" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="0.050000 0.050000 0.380000" />
+    </joint>
+    <link name="propellerrespondable56">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable56">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body56">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody56_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody56_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller55">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable55" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.050000 0.050000 0.380000" />
+    </joint>
+    <link name="propellerrespondable55">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable55">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body55">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody55_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody55_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller57">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable57" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="0.050000 0.150000 0.380000" />
+    </joint>
+    <link name="propellerrespondable57">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable57">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body57">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody57_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody57_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller64">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable64" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="0.250000 0.250000 0.380000" />
+    </joint>
+    <link name="propellerrespondable64">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable64">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body64">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody64_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody64_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller63">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable63" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="0.150000 0.250000 0.380000" />
+    </joint>
+    <link name="propellerrespondable63">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable63">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body63">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody63_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody63_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller62">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable62" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="0.150000 0.150000 0.380000" />
+    </joint>
+    <link name="propellerrespondable62">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable62">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body62">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody62_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody62_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller61">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable61" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="0.250000 0.150000 0.380000" />
+    </joint>
+    <link name="propellerrespondable61">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable61">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body61">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody61_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody61_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller59">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable59" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.050000 0.250000 0.380000" />
+    </joint>
+    <link name="propellerrespondable59">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable59">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body59">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody59_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody59_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller58">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable58" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.050000 0.150000 0.380000" />
+    </joint>
+    <link name="propellerrespondable58">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable58">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body58">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody58_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody58_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller60">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable60" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="0.050000 0.250000 0.380000" />
+    </joint>
+    <link name="propellerrespondable60">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable60">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body60">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody60_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody60_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller33">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable33" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.150000 -0.050000 0.380000" />
+    </joint>
+    <link name="propellerrespondable33">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable33">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body33">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody33_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody33_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller36">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable36" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.150000 0.050000 0.380000" />
+    </joint>
+    <link name="propellerrespondable36">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable36">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body36">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody36_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody36_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller34">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable34" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.250000 -0.050000 0.380000" />
+    </joint>
+    <link name="propellerrespondable34">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable34">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body34">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody34_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody34_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller35">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable35" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.250000 0.050000 0.380000" />
+    </joint>
+    <link name="propellerrespondable35">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable35">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body35">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody35_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody35_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller37">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable37" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.350000 -0.050000 0.380000" />
+    </joint>
+    <link name="propellerrespondable37">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable37">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body37">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody37_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody37_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller38">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable38" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.450000 -0.050000 0.380000" />
+    </joint>
+    <link name="propellerrespondable38">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable38">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body38">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody38_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody38_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller40">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable40" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.350000 0.050000 0.380000" />
+    </joint>
+    <link name="propellerrespondable40">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable40">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body40">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody40_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody40_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller39">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable39" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.450000 0.050000 0.380000" />
+    </joint>
+    <link name="propellerrespondable39">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable39">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body39">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody39_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody39_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller41">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable41" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.350000 0.150000 0.380000" />
+    </joint>
+    <link name="propellerrespondable41">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable41">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body41">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody41_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody41_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller48">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable48" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.150000 0.250000 0.380000" />
+    </joint>
+    <link name="propellerrespondable48">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable48">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body48">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody48_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody48_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller47">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable47" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.250000 0.250000 0.380000" />
+    </joint>
+    <link name="propellerrespondable47">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable47">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body47">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody47_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody47_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller46">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable46" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.250000 0.150000 0.380000" />
+    </joint>
+    <link name="propellerrespondable46">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable46">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body46">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody46_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody46_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller45">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable45" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.150000 0.150000 0.380000" />
+    </joint>
+    <link name="propellerrespondable45">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable45">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body45">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody45_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody45_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller43">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable43" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.450000 0.250000 0.380000" />
+    </joint>
+    <link name="propellerrespondable43">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable43">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body43">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody43_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody43_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller42">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable42" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.450000 0.150000 0.380000" />
+    </joint>
+    <link name="propellerrespondable42">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable42">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body42">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody42_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody42_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+    <joint type="fixed" name="propeller44">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable44" />
+        <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.350000 0.250000 0.380000" />
+    </joint>
+    <link name="propellerrespondable44">
+        <inertial>
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" ixy="-5.0583716089947e-21" ixx="8.2325171633286e-08" />
+            <mass value="0.00051458994857967" />
+        </inertial>
+        <collision name="propeller_respondable44">
+            <origin rpy="3.141593 3.141593 1.865350" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <cylinder radius="0.024999996647239" length="0.0075362827628851" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body44">
+            <origin rpy="-3.141593 3.141593 -3.141593" xyz="-0.000000 0.000000 0.012000" />
+            <geometry>
+                <mesh filename="file://C:/Users/ruisq/OneDrive/Desktop/Penn/ModQuad_research/modquad/urdfs/4x4/4x4_propellerbody44_vis_1.dae" />
+            </geometry>
+            <material name="propellerbody44_material">
+                <color rgba="0.288235 0.288235 0.288235 1.0" />
+            </material>
+        </visual>
+    </link>
+</robot>
