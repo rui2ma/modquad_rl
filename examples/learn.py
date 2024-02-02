@@ -11,7 +11,7 @@ In a terminal, run as:
 
 Notes
 -----
-This is a minimal working example integrating `gym-pybullet-drones` with 
+This is a minimal working example integrating `gym-pybullet-drones` with
 reinforcement learning library `stable-baselines3`.
 
 """
@@ -24,15 +24,24 @@ import numpy as np
 import torch
 from stable_baselines3 import PPO
 from stable_baselines3.common.env_util import make_vec_env
-from stable_baselines3.common.callbacks import EvalCallback, StopTrainingOnRewardThreshold
+from stable_baselines3.common.callbacks import (EvalCallback, StopTrainingOnRewardThreshold,
+                                                CallbackList, StopTrainingOnNoModelImprovement)
+
 from stable_baselines3.common.evaluation import evaluate_policy
+from stable_baselines3.common.vec_env import VecNormalize
+
+
 
 from gym_pybullet_drones.utils.Logger import Logger
 from gym_pybullet_drones.envs.HoverAviary import HoverAviary
+from gym_pybullet_drones.envs.ProgressionAviary import ProgressionAviary
 from gym_pybullet_drones.envs.MultiHoverAviary import MultiHoverAviary
 from gym_pybullet_drones.utils.utils import sync, str2bool
 from gym_pybullet_drones.utils.enums import ObservationType, ActionType
 import matplotlib.pyplot as plt
+
+from gym_pybullet_drones.utils.TensorboardCallback import TensorboardCallback
+
 
 DEFAULT_GUI = True
 DEFAULT_RECORD_VIDEO = True
@@ -40,7 +49,7 @@ DEFAULT_OUTPUT_FOLDER = 'results'
 DEFAULT_COLAB = False
 
 DEFAULT_OBS = ObservationType('kin') # 'kin' or 'rgb'
-DEFAULT_ACT = ActionType('one_d_rpm') # 'rpm' or 'pid' or 'vel' or 'one_d_rpm' or 'one_d_pid'
+# DEFAULT_ACT = ActionType('one_d_rpm') # 'rpm' or 'pid' or 'vel' or 'one_d_rpm' or 'one_d_pid'
 DEFAULT_ACT = ActionType('rpm')
 DEFAULT_AGENTS = 2
 DEFAULT_MA = False
@@ -52,12 +61,19 @@ def run(multiagent=DEFAULT_MA, output_folder=DEFAULT_OUTPUT_FOLDER, gui=DEFAULT_
             os.makedirs(filename+'/')
 
         if not multiagent:
-            train_env = make_vec_env(HoverAviary,
-                                    env_kwargs=dict(initial_xyzs=np.array([[0,0,1.1]]), obs=DEFAULT_OBS, act=DEFAULT_ACT),
+            train_env = make_vec_env(ProgressionAviary,
+                                    env_kwargs=dict(obs=DEFAULT_OBS, act=DEFAULT_ACT),
                                     n_envs=1,
                                     seed=0
                                     )
-            eval_env = HoverAviary(initial_xyzs=np.array([[0,0,1.1]]), obs=DEFAULT_OBS, act=DEFAULT_ACT)
+            eval_env = ProgressionAviary(obs=DEFAULT_OBS, act=DEFAULT_ACT)
+            # eval_env = make_vec_env(HoverAviary,
+            #                         env_kwargs=dict(obs=DEFAULT_OBS, act=DEFAULT_ACT),
+            #                         n_envs=1,
+            #                         seed=0
+            #                         )
+            # train_env = VecNormalize(train_env, norm_obs=True, norm_reward=True, clip_obs=10.)
+            # eval_env = VecNormalize(eval_env, norm_obs=True, norm_reward=True, clip_obs=10.)
         else:
             train_env = make_vec_env(MultiHoverAviary,
                                     env_kwargs=dict(num_drones=DEFAULT_AGENTS, obs=DEFAULT_OBS, act=DEFAULT_ACT),
@@ -69,25 +85,33 @@ def run(multiagent=DEFAULT_MA, output_folder=DEFAULT_OUTPUT_FOLDER, gui=DEFAULT_
         #### Check the environment's spaces ########################
         print('[INFO] Action space:', train_env.action_space)
         print('[INFO] Observation space:', train_env.observation_space)
-        
+
         #### Train the model #######################################
         model = PPO('MlpPolicy',
                     train_env,
-                    # policy_kwargs=dict(activation_fn=torch.nn.ReLU, net_arch=[512, 512, dict(vf=[256, 128], pi=[256, 128])]),
+                    policy_kwargs=dict(activation_fn=torch.nn.Tanh, net_arch=[dict(vf=[256,256], pi=[256,256])]),   #vf: actor, pi: critic
                     # tensorboard_log=filename+'/tb/',
+                    tensorboard_log='./tensorboard_logs/quadrotor_progression/',
                     verbose=1)
 
         callback_on_best = StopTrainingOnRewardThreshold(reward_threshold=np.inf,
                                                         verbose=1)
+        callback_on_stagnate = StopTrainingOnNoModelImprovement(max_no_improvement_evals=1000,
+                                                                verbose=1)
         eval_callback = EvalCallback(eval_env,
                                     callback_on_new_best=callback_on_best,
+                                    callback_after_eval=callback_on_stagnate,
                                     verbose=1,
                                     best_model_save_path=filename+'/',
                                     log_path=filename+'/',
                                     eval_freq=int(2000),
                                     deterministic=True,
                                     render=False)
-        model.learn(total_timesteps=3*int(1e5) if local else int(1e2), # shorter training in GitHub Actions pytest
+
+        # tensorboard_callback = TensorboardCallback()
+        # callbacklist = CallbackList([eval_callback, callback_on_stagnate])
+
+        model.learn(total_timesteps=1*int(1e5) if local else int(1e2), # shorter training in GitHub Actions pytest
                     callback=eval_callback,
                     log_interval=100)
 
@@ -99,7 +123,7 @@ def run(multiagent=DEFAULT_MA, output_folder=DEFAULT_OUTPUT_FOLDER, gui=DEFAULT_
             for j in range(data['timesteps'].shape[0]):
                 print(str(data['timesteps'][j])+","+str(data['results'][j][0]))
     else:
-        filename=os.path.join(output_folder, "1x1_rpm_fail")
+        filename=os.path.join(output_folder, "save-01.29.2024_21.52.05")
     ############################################################
     ############################################################
     ############################################################
@@ -116,25 +140,27 @@ def run(multiagent=DEFAULT_MA, output_folder=DEFAULT_OUTPUT_FOLDER, gui=DEFAULT_
 
     #### Show (and record a video of) the model's performance ##
     if not multiagent:
-        test_env = HoverAviary(initial_xyzs=np.array([[0,0,1.1]]),
-                               gui=gui,
+        test_env = ProgressionAviary(gui=gui,
                                obs=DEFAULT_OBS,
                                act=DEFAULT_ACT,
+                               initial_xyzs=np.vstack([np.array([0]), \
+                                        np.array([0]), \
+                                        np.array([.1])]).transpose().reshape(1, 3),
                                record=record_video)
-        test_env_nogui = HoverAviary(initial_xyzs=np.array([[0,0,1.1]]),obs=DEFAULT_OBS, act=DEFAULT_ACT)
+        test_env_nogui = ProgressionAviary(obs=DEFAULT_OBS, act=DEFAULT_ACT)
     else:
         test_env = MultiHoverAviary(gui=gui,
-                                        num_drones=DEFAULT_AGENTS,
-                                        obs=DEFAULT_OBS,
-                                        act=DEFAULT_ACT,
-                                        record=record_video)
+                                    num_drones=DEFAULT_AGENTS,
+                                    obs=DEFAULT_OBS,
+                                    act=DEFAULT_ACT,
+                                    record=record_video)
         test_env_nogui = MultiHoverAviary(num_drones=DEFAULT_AGENTS, obs=DEFAULT_OBS, act=DEFAULT_ACT)
     logger = Logger(logging_freq_hz=int(test_env.CTRL_FREQ),
                 num_drones=DEFAULT_AGENTS if multiagent else 1,
                 output_folder=output_folder,
                 colab=colab
                 )
-    # rewards = []
+    rewards = []
     mean_reward, std_reward = evaluate_policy(model,
                                               test_env_nogui,
                                               n_eval_episodes=10
@@ -148,19 +174,30 @@ def run(multiagent=DEFAULT_MA, output_folder=DEFAULT_OUTPUT_FOLDER, gui=DEFAULT_
                                         deterministic=True
                                         )
         obs, reward, terminated, truncated, info = test_env.step(action)
-        # rewards.append(reward)
+        rewards.append(reward)
         obs2 = obs.squeeze()
         act2 = action.squeeze()
+        if action.shape[1]==1:  # one_d_rpm
+            log_state = np.hstack([obs2[0:3],
+                                    np.zeros(7),
+                                    obs2[12:15],
+                                    obs2[15:],
+                                    np.array([act2]*4)
+                                    ])
+        else:
+            log_state = np.hstack([obs2[0:3],
+                                    np.zeros(7),
+                                    obs2[12:15],
+                                    obs2[15:],
+                                    act2,
+                                    ])
+
         print("Obs:", obs, "\tAction", action, "\tReward:", reward, "\tTerminated:", terminated, "\tTruncated:", truncated)
         if DEFAULT_OBS == ObservationType.KIN:
             if not multiagent:
                 logger.log(drone=0,
                     timestamp=i/test_env.CTRL_FREQ,
-                    state=np.hstack([obs2[0:3],
-                                        np.zeros(4),
-                                        obs2[3:15],
-                                        act2
-                                        ]),
+                    state=log_state,
                     control=np.zeros(12)
                     )
             else:
@@ -181,8 +218,8 @@ def run(multiagent=DEFAULT_MA, output_folder=DEFAULT_OUTPUT_FOLDER, gui=DEFAULT_
             obs = test_env.reset(seed=42, options={})
     test_env.close()
 
-    # plt.plot(rewards)
-    # plt.title("rewards progression")
+    plt.plot(rewards)
+    plt.title("rewards progression")
     if plot and DEFAULT_OBS == ObservationType.KIN:
         logger.plot()
 if __name__ == '__main__':
@@ -193,7 +230,7 @@ if __name__ == '__main__':
     parser.add_argument('--record_video',       default=DEFAULT_RECORD_VIDEO,  type=str2bool,      help='Whether to record a video (default: False)', metavar='')
     parser.add_argument('--output_folder',      default=DEFAULT_OUTPUT_FOLDER, type=str,           help='Folder where to save logs (default: "results")', metavar='')
     parser.add_argument('--colab',              default=DEFAULT_COLAB,         type=bool,          help='Whether example is being run by a notebook (default: "False")', metavar='')
-    parser.add_argument('--eval',               default=False,                 type=bool,          help='Whether run evaluation of the model', metavar='')
+    parser.add_argument('--eval',               default=False,                 type=bool,          help='Whether to run evaluation of the model', metavar='')
     ARGS = parser.parse_args()
 
     run(**vars(ARGS))

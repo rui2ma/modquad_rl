@@ -8,7 +8,7 @@
             <!-- <origin rpy="0 -1.5707965 0" xyz="0 0 0" /> -->
             <!-- 0.005428000000000001 2.8e-05 0.005443400000000001 -->
             <origin rpy="0 0 0" xyz="0 0 0" />
-            <inertia ixx="0.020028000000000004" ixz="0.0" ixy="0.0" iyy="2.8e-05" iyz="0.0" izz="0.020043400000000003" />
+            <inertia ixx="0.003744000000000001" ixz="0.0" ixy="0.0" iyy="0.0010440000000000002" iyz="0.0" izz="0.0045000000000000005" />
             <mass value="0.270" />
         </inertial>
         <collision name="MultiRotor">
@@ -23,7 +23,7 @@
                 <mesh filename="./2x1_Shape2_vis_1.dae" />
             </geometry>
             <material name="Shape2_material">
-                <color rgba="1.000000 1.000000 1.000000 1.0" />
+                <color rgba="0.000000 0.000000 0.000000 1.0" />
             </material>
         </visual>
         <visual name="Shape1">
@@ -32,7 +32,7 @@
                 <mesh filename="./2x1_Shape1_vis_1.dae" />
             </geometry>
             <material name="Shape1_material">
-                <color rgba="1.000000 1.000000 1.000000 1.0" />
+                <color rgba="0.000000 0.000000 0.000000 1.0" />
             </material>
         </visual>
     </link>

@@ -65,7 +65,7 @@ class HoverAviary(BaseRLAviary):
                          )
 
     ################################################################################
-    
+
     def _computeReward(self):
         """Computes the current reward value.
 
@@ -75,13 +75,19 @@ class HoverAviary(BaseRLAviary):
             The reward.
 
         """
+        # state vector (33, ): pos,quat,rpy,vel,ang_v,last_clipped_action
         state = self._getDroneStateVector(0)
-        ret = - np.linalg.norm(self.TARGET_POS-state[0:3])**2
-        # print(np.linalg.norm(self.TARGET_POS-state[0:3]))
+        b = 1e-3
+        ret = max(0, 2 - np.linalg.norm(self.TARGET_POS - state[:3]) ** 4 - b * np.linalg.norm(state[13:16]) ** 2)
+        if state[2] < 0.05:
+            ret = -10
+        if np.linalg.norm(self.TARGET_POS - state[0:3]) < .001:
+            ret = 10
+
         return ret
 
     ################################################################################
-    
+
     def _computeTerminated(self):
         """Computes the current done value.
 
@@ -92,13 +98,13 @@ class HoverAviary(BaseRLAviary):
 
         """
         state = self._getDroneStateVector(0)
-        if np.linalg.norm(self.TARGET_POS-state[0:3]) < .0001:
+        if np.linalg.norm(self.TARGET_POS - state[0:3]) < .0001 or state[2] < .05:
             return True
         else:
             return False
-        
+
     ################################################################################
-    
+
     def _computeTruncated(self):
         """Computes the current truncated value.
 
@@ -108,7 +114,7 @@ class HoverAviary(BaseRLAviary):
             Whether the current episode timed out.
 
         """
-        if self.step_counter/self.PYB_FREQ > self.EPISODE_LEN_SEC:
+        if self.step_counter / self.PYB_FREQ > self.EPISODE_LEN_SEC:
             return True
         else:
             return False

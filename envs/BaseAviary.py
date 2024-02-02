@@ -192,9 +192,22 @@ class BaseAviary(gym.Env):
                                                             )
         #### Set initial poses #####################################
         if initial_xyzs is None:
-            self.INIT_XYZS = np.vstack([np.array([x*4*self.L for x in range(self.NUM_DRONES)]), \
-                                        np.array([y*4*self.L for y in range(self.NUM_DRONES)]), \
-                                        np.ones(self.NUM_DRONES) * (self.COLLISION_H/2-self.COLLISION_Z_OFFSET+.1)]).transpose().reshape(self.NUM_DRONES, 3)
+            choice = np.random.uniform(0,1)
+            init1 = np.vstack([np.array([0 for x in range(self.NUM_DRONES)]), \
+                                        np.array([0 for y in range(self.NUM_DRONES)]), \
+                                        np.array([0.5 for i in range(self.NUM_DRONES)])]).transpose().reshape(self.NUM_DRONES, 3)
+
+            init2 = np.vstack([np.array([0.5 for x in range(self.NUM_DRONES)]), \
+                                        np.array([0 for y in range(self.NUM_DRONES)]), \
+                                        np.array([1 for i in range(self.NUM_DRONES)])]).transpose().reshape(self.NUM_DRONES, 3)
+            self.INIT_XYZS = init1 if choice<=0.5 else init2
+            # self.INIT_XYZS = np.vstack([np.array([np.random.uniform(-0.5,0.5) for x in range(self.NUM_DRONES)]), \
+            #                             np.array([np.random.uniform(-0.5,0.5) for y in range(self.NUM_DRONES)]), \
+            #                             np.array([1+np.random.uniform(-0.5,0.5) for i in range(self.NUM_DRONES)])]).transpose().reshape(self.NUM_DRONES, 3)
+                                        # np.ones(self.NUM_DRONES) * (self.COLLISION_H/2-self.COLLISION_Z_OFFSET+.1)]).transpose().reshape(self.NUM_DRONES, 3)
+            # self.INIT_XYZS = np.vstack([np.array([x*4*self.L for x in range(self.NUM_DRONES)]), \
+            #                             np.array([y*4*self.L for y in range(self.NUM_DRONES)]), \
+            #                             np.ones(self.NUM_DRONES) * (self.COLLISION_H/2-self.COLLISION_Z_OFFSET+.1)]).transpose().reshape(self.NUM_DRONES, 3)
         elif np.array(initial_xyzs).shape == (self.NUM_DRONES,3):
             self.INIT_XYZS = initial_xyzs
         else:
@@ -241,7 +254,6 @@ class BaseAviary(gym.Env):
         """
 
         # TODO : initialize random number generator with seed
-
         p.resetSimulation(physicsClientId=self.CLIENT)
         #### Housekeeping ##########################################
         self._housekeeping()
@@ -473,6 +485,7 @@ class BaseAviary(gym.Env):
         self.rpy = np.zeros((self.NUM_DRONES, 3))
         self.vel = np.zeros((self.NUM_DRONES, 3))
         self.ang_v = np.zeros((self.NUM_DRONES, 3))
+        self.rot_mat = np.zeros((self.NUM_DRONES, 9))
         if self.PHYSICS == Physics.DYN:
             self.rpy_rates = np.zeros((self.NUM_DRONES, 3))
         #### Set PyBullet's parameters #############################
@@ -517,7 +530,47 @@ class BaseAviary(gym.Env):
             self.pos[i], self.quat[i] = p.getBasePositionAndOrientation(self.DRONE_IDS[i], physicsClientId=self.CLIENT)
             self.rpy[i] = p.getEulerFromQuaternion(self.quat[i])
             self.vel[i], self.ang_v[i] = p.getBaseVelocity(self.DRONE_IDS[i], physicsClientId=self.CLIENT)
+            self.rot_mat[i] = self._quaternion_rotation_matrix(self.quat[i])
+
+    def _quaternion_rotation_matrix(self,Q):
+        """
+        Covert a quaternion into a full three-dimensional rotation matrix.
     
+        Input
+        :param Q: A 4 element array representing the quaternion (q0,q1,q2,q3) 
+    
+        Output
+        :return: A 3x3 element matrix representing the full 3D rotation matrix. 
+                This rotation matrix converts a point in the local reference 
+                frame to a point in the global reference frame.
+        """
+        # Extract the values from Q
+        q0 = Q[0]
+        q1 = Q[1]
+        q2 = Q[2]
+        q3 = Q[3]
+        
+        # First row of the rotation matrix
+        r00 = 2 * (q0 * q0 + q1 * q1) - 1
+        r01 = 2 * (q1 * q2 - q0 * q3)
+        r02 = 2 * (q1 * q3 + q0 * q2)
+        
+        # Second row of the rotation matrix
+        r10 = 2 * (q1 * q2 + q0 * q3)
+        r11 = 2 * (q0 * q0 + q2 * q2) - 1
+        r12 = 2 * (q2 * q3 - q0 * q1)
+        
+        # Third row of the rotation matrix
+        r20 = 2 * (q1 * q3 - q0 * q2)
+        r21 = 2 * (q2 * q3 + q0 * q1)
+        r22 = 2 * (q0 * q0 + q3 * q3) - 1
+        
+        # 3x3 rotation matrix
+        rot_matrix = np.array([[r00, r01, r02],
+                            [r10, r11, r12],
+                            [r20, r21, r22]])
+                                
+        return rot_matrix.flatten()
     ################################################################################
 
     def _startVideoRecording(self):
@@ -553,14 +606,14 @@ class BaseAviary(gym.Env):
         Returns
         -------
         ndarray 
-            (20,)-shaped array of floats containing the state vector of the n-th drone.
+            (29,)-shaped array of floats containing the state vector of the n-th drone.
             Check the only line in this method and `_updateAndStoreKinematicInformation()`
             to understand its format.
 
         """
         state = np.hstack([self.pos[nth_drone, :], self.quat[nth_drone, :], self.rpy[nth_drone, :],
-                           self.vel[nth_drone, :], self.ang_v[nth_drone, :], self.last_clipped_action[nth_drone, :]])
-        return state.reshape(20,)
+                           self.vel[nth_drone, :], self.ang_v[nth_drone, :], self.last_clipped_action[nth_drone, :], self.rot_mat[nth_drone, :]])
+        return state.reshape(29,)
 
     ################################################################################
 
