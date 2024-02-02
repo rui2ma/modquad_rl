@@ -80,7 +80,7 @@ class ProgressionAviary(BaseRLAviary):
         # state vector (29, ): pos,quat,rpy,vel,ang_v,last_clipped_action,rot
         state = self._getDroneStateVector(0)
         b = 1e-3
-
+        # commit test
         if self.INIT_XYZS[0][0] == 0:   # first waypoint
             prev = np.array([0,0,0])
             next = self.TARGET_POS[0,:]
