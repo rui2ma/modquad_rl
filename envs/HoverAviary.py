@@ -18,7 +18,8 @@ class HoverAviary(BaseRLAviary):
                  gui=False,
                  record=False,
                  obs: ObservationType=ObservationType.KIN,
-                 act: ActionType=ActionType.RPM
+                 act: ActionType=ActionType.RPM,
+                 num_waypoints = 3
                  ):
         """Initialization of a single agent RL environment.
 
@@ -61,7 +62,8 @@ class HoverAviary(BaseRLAviary):
                          gui=gui,
                          record=record,
                          obs=obs,
-                         act=act
+                         act=act,
+                         num_waypoints=num_waypoints
                          )
 
     ################################################################################
@@ -101,7 +103,7 @@ class HoverAviary(BaseRLAviary):
 
         """
         state = self._getDroneStateVector(0)
-        if np.linalg.norm(self.TARGET_POS-state[0:3]) < .0001 or state[2] < .05:
+        if state[2] < .05 or np.linalg.norm(self.TARGET_POS-state[0:3]) < .0001:
             return True
         else:
             return False

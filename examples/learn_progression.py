@@ -61,12 +61,12 @@ def run(multiagent=DEFAULT_MA, output_folder=DEFAULT_OUTPUT_FOLDER, gui=DEFAULT_
             os.makedirs(filename+'/')
 
         if not multiagent:
-            train_env = make_vec_env(HoverAviary,
+            train_env = make_vec_env(ProgressionAviary,
                                     env_kwargs=dict(obs=DEFAULT_OBS, act=DEFAULT_ACT),
                                     n_envs=1,
                                     seed=0
                                     )
-            eval_env = HoverAviary(obs=DEFAULT_OBS, act=DEFAULT_ACT)
+            eval_env = ProgressionAviary(obs=DEFAULT_OBS, act=DEFAULT_ACT)
             # eval_env = make_vec_env(HoverAviary,
             #                         env_kwargs=dict(obs=DEFAULT_OBS, act=DEFAULT_ACT),
             #                         n_envs=1,
@@ -109,9 +109,9 @@ def run(multiagent=DEFAULT_MA, output_folder=DEFAULT_OUTPUT_FOLDER, gui=DEFAULT_
                                     render=False)
 
         # tensorboard_callback = TensorboardCallback()
-        # callbacklist = CallbackList([eval_callback, callback_on_stagnate])
+        # callbacklist = CallbackList([eval_callback, tensorboard_callback])
 
-        model.learn(total_timesteps=1*int(1e5) if local else int(1e2), # shorter training in GitHub Actions pytest
+        model.learn(total_timesteps=3*int(1e6) if local else int(1e2), # shorter training in GitHub Actions pytest
                     callback=eval_callback,
                     log_interval=100)
 
@@ -123,7 +123,7 @@ def run(multiagent=DEFAULT_MA, output_folder=DEFAULT_OUTPUT_FOLDER, gui=DEFAULT_
             for j in range(data['timesteps'].shape[0]):
                 print(str(data['timesteps'][j])+","+str(data['results'][j][0]))
     else:
-        filename=os.path.join(output_folder, "1x1_1waypoint")
+        filename=os.path.join(output_folder, "small_scale_1x1_mag")
     ############################################################
     ############################################################
     ############################################################
@@ -140,14 +140,14 @@ def run(multiagent=DEFAULT_MA, output_folder=DEFAULT_OUTPUT_FOLDER, gui=DEFAULT_
 
     #### Show (and record a video of) the model's performance ##
     if not multiagent:
-        test_env = HoverAviary(gui=gui,
-                               obs=DEFAULT_OBS,
-                               act=DEFAULT_ACT,
-                               initial_xyzs=np.vstack([np.array([1]), \
-                                        np.array([0]), \
-                                        np.array([.1])]).transpose().reshape(1, 3),
-                               record=record_video)
-        test_env_nogui = HoverAviary(obs=DEFAULT_OBS, act=DEFAULT_ACT)
+        test_env = ProgressionAviary(waypoints=np.array([[0,0,1.5]]),
+                                     initial_xyzs=np.array([[-0.5,-0.5,0.5]]),
+                                     test_flag=True,
+                                     gui=gui,
+                                     obs=DEFAULT_OBS,
+                                     act=DEFAULT_ACT,
+                                     record=record_video)
+        test_env_nogui = ProgressionAviary(obs=DEFAULT_OBS, act=DEFAULT_ACT)
     else:
         test_env = MultiHoverAviary(gui=gui,
                                     num_drones=DEFAULT_AGENTS,
@@ -212,7 +212,6 @@ def run(multiagent=DEFAULT_MA, output_folder=DEFAULT_OUTPUT_FOLDER, gui=DEFAULT_
                         control=np.zeros(12)
                         )
         test_env.render()
-        print(terminated)
         sync(i, start, test_env.CTRL_TIMESTEP)
         if terminated:
             obs = test_env.reset(seed=42, options={})

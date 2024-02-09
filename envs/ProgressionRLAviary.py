@@ -4,16 +4,18 @@ import pybullet as p
 from gymnasium import spaces
 from collections import deque
 
-from gym_pybullet_drones.envs.BaseAviary import BaseAviary
+from gym_pybullet_drones.envs.ProgressionBaseAviary import ProgressionBaseAviary
 from gym_pybullet_drones.utils.enums import DroneModel, Physics, ActionType, ObservationType, ImageType
 from gym_pybullet_drones.control.DSLPIDControl import DSLPIDControl
 
-class BaseRLAviary(BaseAviary):
+class ProgressionRLAviary(ProgressionBaseAviary):
     """Base single and multi-agent environment class for reinforcement learning."""
     
     ################################################################################
 
     def __init__(self,
+                 waypoints,
+                 window_size,
                  drone_model: DroneModel=DroneModel.CF2X,
                  num_drones: int=1,
                  neighbourhood_radius: float=np.inf,
@@ -26,7 +28,7 @@ class BaseRLAviary(BaseAviary):
                  record=False,
                  obs: ObservationType=ObservationType.KIN,
                  act: ActionType=ActionType.RPM,
-                 num_waypoints=3
+                 test_flag=False
                  ):
         """Initialization of a generic single and multi-agent RL environment.
 
@@ -77,7 +79,9 @@ class BaseRLAviary(BaseAviary):
                 self.ctrl = [DSLPIDControl(drone_model=DroneModel.CF2X) for i in range(num_drones)]
             else:
                 print("[ERROR] in BaseRLAviary.__init()__, no controller is available for the specified drone_model")
-        super().__init__(drone_model=drone_model,
+        super().__init__(waypoints=waypoints,
+                         window_size=window_size,
+                         drone_model=drone_model,
                          num_drones=num_drones,
                          neighbourhood_radius=neighbourhood_radius,
                          initial_xyzs=initial_xyzs,
@@ -90,7 +94,7 @@ class BaseRLAviary(BaseAviary):
                          obstacles=True, # Add obstacles for RGB observations and/or FlyThruGate
                          user_debug_gui=False, # Remove of RPM sliders from all single agent learning aviaries
                          vision_attributes=vision_attributes,
-                         num_waypoints=num_waypoints
+                         test_flag = test_flag
                          )
         #### Set a limit on the maximum target speed ###############
         if act == ActionType.VEL:
@@ -277,6 +281,8 @@ class BaseRLAviary(BaseAviary):
                 elif self.ACT_TYPE in [ActionType.ONE_D_RPM, ActionType.ONE_D_PID]:
                     obs_lower_bound = np.hstack([obs_lower_bound, np.array([[act_lo] for i in range(self.NUM_DRONES)])])
                     obs_upper_bound = np.hstack([obs_upper_bound, np.array([[act_hi] for i in range(self.NUM_DRONES)])])
+            obs_lower_bound = np.hstack([obs_lower_bound, np.array([[lo,lo,0,0]*self.window_size for i in range(self.NUM_DRONES)])])
+            obs_upper_bound = np.hstack([obs_upper_bound, np.array([[hi,hi,hi,hi]*self.window_size for i in range(self.NUM_DRONES)])])
             return spaces.Box(low=obs_lower_bound, high=obs_upper_bound, dtype=np.float32)
             ############################################################
         else:
@@ -312,15 +318,37 @@ class BaseRLAviary(BaseAviary):
             #### OBS SPACE OF SIZE 18 + N future waypoints
             obs_18 = np.zeros((self.NUM_DRONES,18))
 
-            for i in range(self.NUM_DRONES):
-                #obs = self._clipAndNormalizeState(self._getDroneStateVector(i))
-                obs = self._getDroneStateVector(i)
-                obs_18[i, :] = np.hstack([obs[0:3], obs[20:], obs[10:13], obs[13:16]]).reshape(18,)
+            curr_pos = np.expand_dims(self._getDroneStateVector(0)[0:3],axis=0)     # drone xyz pos
+            visited_index = len(self.VISITED_POS)
+            obs_waypoints = np.zeros((self.window_size,3))
+            # obs_waypoints = np.zeros((3,self.window_size))
+            window_surplus = self.window_size - self.waypoints[visited_index:,:].shape[0]
+            # window_surplus = self.window_size - self.waypoints[:,visited_index:].shape[1]
+            if window_surplus > 0:      # repeat last waypoints as all future waypoints
+                last_waypoint = np.repeat(self.waypoints[-1:,:], window_surplus, axis=0)
+                obs_waypoints = np.vstack((self.waypoints[visited_index:,:],last_waypoint))
+            else:
+                obs_waypoints = self.waypoints[visited_index:visited_index+self.window_size,:]
+            # print(obs_waypoints)
+            mag = np.expand_dims(np.linalg.norm(obs_waypoints - curr_pos,axis=1),axis=-1)
+            # obs_waypoints = (obs_waypoints - curr_pos)/(np.linalg.norm(obs_waypoints - curr_pos,axis=1))        # (window_sizex3)
+            obs_waypoints = (obs_waypoints - curr_pos)
+            # print(obs_waypoints)
+            obs_waypoints = obs_waypoints.T.reshape(1,-1)   #[xyz_1,xyz_2,...]
+
+            obs = self._getDroneStateVector(0)
+            obs_18[0, :] = np.hstack([obs[0:3], obs[20:], obs[10:13], obs[13:16]]).reshape(18,)
+
+            ret = np.hstack((obs_18, obs_waypoints,mag))        # (1,27) obs
+            # for i in range(self.NUM_DRONES):
+            #     #obs = self._clipAndNormalizeState(self._getDroneStateVector(i))
+            #     obs = self._getDroneStateVector(i)
+            #     obs_18[i, :] = np.hstack([obs[0:3], obs[20:], obs[10:13], obs[13:16]]).reshape(18,)
                 #obs: xyz, rpy, linear_vel, angular_vel
-            ret = np.array([obs_18[i, :] for i in range(self.NUM_DRONES)]).astype('float32')
+            # ret = np.array([obs_18[i, :] for i in range(self.NUM_DRONES)]).astype('float32')
             #### Add action buffer to observation #######################
-            for i in range(self.ACTION_BUFFER_SIZE):
-                ret = np.hstack([ret, np.array([self.action_buffer[i][j, :] for j in range(self.NUM_DRONES)])])
+            # for i in range(self.ACTION_BUFFER_SIZE):
+            #     ret = np.hstack([ret, np.array([self.action_buffer[i][j, :] for j in range(self.NUM_DRONES)])])
             return ret
             ############################################################
         else:

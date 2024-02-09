@@ -122,6 +122,7 @@ def run(multiagent=DEFAULT_MA, output_folder=DEFAULT_OUTPUT_FOLDER, gui=DEFAULT_
         test_env = HoverAviary(gui=gui,
                                obs=DEFAULT_OBS,
                                act=DEFAULT_ACT,
+                               initial_xyzs=np.array([[-0.5,-0.5,0.05]]),
                                record=record_video)
         test_env_nogui = HoverAviary(obs=DEFAULT_OBS, act=DEFAULT_ACT)
     else:
@@ -145,7 +146,7 @@ def run(multiagent=DEFAULT_MA, output_folder=DEFAULT_OUTPUT_FOLDER, gui=DEFAULT_
 
     obs, info = test_env.reset(seed=42, options={})
     start = time.time()
-    for i in range((test_env.EPISODE_LEN_SEC+2)*test_env.CTRL_FREQ):
+    for i in range((test_env.EPISODE_LEN_SEC)*test_env.CTRL_FREQ):
         action, _states = model.predict(obs,
                                         deterministic=True
                                         )

@@ -13,9 +13,10 @@ import pybullet as p
 import pybullet_data
 import gymnasium as gym
 from gym_pybullet_drones.utils.enums import DroneModel, Physics, ImageType
+import tensorflow as tf
 
 
-class BaseAviary(gym.Env):
+class ProgressionBaseAviary(gym.Env):
     """Base class for "drone aviary" Gym environments."""
 
     # metadata = {'render.modes': ['human']}
@@ -23,6 +24,9 @@ class BaseAviary(gym.Env):
     ################################################################################
 
     def __init__(self,
+                 waypoints,
+                 window_size,
+                 test_flag=False,
                  drone_model: DroneModel=DroneModel.CF2X,
                  num_drones: int=1,
                  neighbourhood_radius: float=np.inf,
@@ -37,7 +41,6 @@ class BaseAviary(gym.Env):
                  user_debug_gui=True,
                  vision_attributes=False,
                  output_folder='results',
-                 num_waypoints=3
                  ):
         """Initialization of a generic aviary environment.
 
@@ -191,23 +194,28 @@ class BaseAviary(gym.Env):
                                                             nearVal=0.1,
                                                             farVal=1000.0
                                                             )
+        #### Set waypoints #########################################
+        self.test_flag = test_flag
+        self.window_size = window_size
+        if waypoints is None:
+            # (3,3): (x,y,z) x 3 points
+            self.waypoints = np.random.uniform(low=-1, high=1, size=(self.window_size,2))
+            self.waypoints = np.hstack((self.waypoints, np.random.uniform(low=0.2, high=1.2, size=(self.window_size,1))))
+            # self.waypoints = np.array([[0,1,1],     # each column is each waypoint coordinate
+            #                            [0,0,1],
+            #                            [1,1,1]])
+        else:
+            self.waypoints = waypoints
+        self.VISITED_POS = []
         #### Set initial poses #####################################
         if initial_xyzs is None:
-            # choice = np.random.uniform(0,1)
-            # init1 = np.vstack([np.array([0 for x in range(self.NUM_DRONES)]), \
-            #                             np.array([0 for y in range(self.NUM_DRONES)]), \
-            #                             np.array([0.5 for i in range(self.NUM_DRONES)])]).transpose().reshape(self.NUM_DRONES, 3)
-            #
-            # init2 = np.vstack([np.array([0.5 for x in range(self.NUM_DRONES)]), \
-            #                             np.array([0 for y in range(self.NUM_DRONES)]), \
-            #                             np.array([1 for i in range(self.NUM_DRONES)])]).transpose().reshape(self.NUM_DRONES, 3)
-            # self.INIT_XYZS = init1 if choice<=0.5 else init2
-            # self.INIT_XYZS = np.vstack([np.array([np.random.uniform(0, 1) for x in range(self.NUM_DRONES)]), \
-            #                             np.array([np.random.uniform(0, 1) for y in range(self.NUM_DRONES)]), \
-            #                             np.array([np.random.uniform(0.1, 1) for z in range(self.NUM_DRONES)])]).transpose().reshape(self.NUM_DRONES, 3)
-            self.INIT_XYZS = np.vstack([np.array([x*4*self.L for x in range(self.NUM_DRONES)]), \
-                                        np.array([y*4*self.L for y in range(self.NUM_DRONES)]), \
-                                        np.ones(self.NUM_DRONES) * (self.COLLISION_H/2-self.COLLISION_Z_OFFSET+.1)]).transpose().reshape(self.NUM_DRONES, 3)
+            self.INIT_XYZS = np.vstack([np.array([np.random.uniform(-1, 1) for x in range(self.NUM_DRONES)]), \
+                                        np.array([np.random.uniform(-1, 1) for y in range(self.NUM_DRONES)]), \
+                                        np.array([np.random.uniform(0.2, 1.2) for z in range(self.NUM_DRONES)])]).transpose().reshape(self.NUM_DRONES, 3)
+            # self.INIT_XYZS = np.array([[0,0,0.1]])
+            # self.INIT_XYZS = np.vstack([np.array([x*4*self.L for x in range(self.NUM_DRONES)]), \
+            #                             np.array([y*4*self.L for y in range(self.NUM_DRONES)]), \
+            #                             np.ones(self.NUM_DRONES) * (self.COLLISION_H/2-self.COLLISION_Z_OFFSET+.1)]).transpose().reshape(self.NUM_DRONES, 3)
         elif np.array(initial_xyzs).shape == (self.NUM_DRONES,3):
             self.INIT_XYZS = initial_xyzs
         else:
@@ -227,8 +235,7 @@ class BaseAviary(gym.Env):
         self._updateAndStoreKinematicInformation()
         #### Start video recording #################################
         self._startVideoRecording()
-        self.num_waypoints = num_waypoints
-    
+
     ################################################################################
 
     def reset(self,
@@ -517,6 +524,16 @@ class BaseAviary(gym.Env):
             # p.setCollisionFilterPair(bodyUniqueIdA=self.PLANE_ID, bodyUniqueIdB=self.DRONE_IDS[i], linkIndexA=-1, linkIndexB=-1, enableCollision=0, physicsClientId=self.CLIENT)
         if self.OBSTACLES:
             self._addObstacles()
+
+        # modified by rui
+        if not self.test_flag:
+            self.waypoints = np.random.uniform(low=-1, high=1, size=(self.window_size, 2))
+            self.waypoints = np.hstack((self.waypoints, np.random.uniform(low=0.2, high=1.2, size=(self.window_size, 1))))
+            self.INIT_XYZS = np.vstack([np.array([np.random.uniform(-1, 1) for x in range(self.NUM_DRONES)]), \
+                                        np.array([np.random.uniform(-1, 1) for y in range(self.NUM_DRONES)]), \
+                                        np.array([np.random.uniform(0.2, 1.2) for z in
+                                                  range(self.NUM_DRONES)])]).transpose().reshape(self.NUM_DRONES, 3)
+
     
     ################################################################################
 
