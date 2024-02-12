@@ -51,7 +51,7 @@ class ProgressionAviary(ProgressionRLAviary):
             The type of action space (1 or 3D; RPMS, thurst and torques, or waypoint with PID control)
 
         """
-        self.EPISODE_LEN_SEC = 8
+        self.EPISODE_LEN_SEC = 10
         super().__init__(waypoints=waypoints,
                          window_size=window_size,
                          drone_model=drone_model,
@@ -68,8 +68,7 @@ class ProgressionAviary(ProgressionRLAviary):
                          test_flag = test_flag
                          )
         self.prev_pos = self.INIT_XYZS
-        self.TARGET_POS = self.waypoints[self.VISITED_IDX, :]
-        self.cum_reward = 0
+        self.TARGET_POS = self.waypoints[0, :]
 
     ################################################################################
     
@@ -83,23 +82,39 @@ class ProgressionAviary(ProgressionRLAviary):
 
         """
         # state vector (29, ): pos,quat,rpy,vel,ang_v,last_clipped_action,rot
-        if self.VISITED_IDX > 0:
-            print(self.cum_reward)
         state = self._getDroneStateVector(0)
-        b = 1e-3
+        b = 1e-6
         c = 1e-6
-        if self.VISITED_IDX >= self.waypoints.shape[0]-1:    #finished all waypoints
+        if self.VISITED_IDX > self.waypoints.shape[0]-1:    #finished all waypoints
             ret = 10
         else:
-            ret = max(0, 2 - np.linalg.norm(self.TARGET_POS - state[0:3])) ** 2 - b * np.linalg.norm(
+            self.TARGET_POS = self.waypoints[self.VISITED_IDX, :]
+            ret = np.sqrt(max(0, 1 - np.linalg.norm(self.TARGET_POS - state[0:3]))) - b * np.linalg.norm(
                 state[10:13]) - c * np.linalg.norm(state[13:16]) + self.cum_reward
             if np.linalg.norm(self.TARGET_POS-state[0:3]) < 0.01:
                 self.VISITED_IDX += 1
-                self.cum_reward += ret
+                self.cum_reward = ret
+        self.max_pts_reached = self.VISITED_IDX
         if state[2]<0.01:
             ret = -10
-        return ret
 
+        # state = self._getDroneStateVector(0)
+        # b = 1e-6
+        # c = 1e-6
+        # if self.VISITED_IDX > self.waypoints.shape[0] - 1:  # finished all waypoints
+        #     ret = 10
+        # else:
+        #     self.TARGET_POS = self.waypoints[self.VISITED_IDX, :]
+        #     ret = (np.linalg.norm(self.TARGET_POS - self.prev_pos) - np.linalg.norm(self.TARGET_POS - state[0:3]) -
+        #            b*np.linalg.norm(state[13:16]))
+        #     self.prev_pos = state[0:3]
+        #     if np.linalg.norm(self.TARGET_POS - state[0:3]) < 0.01:
+        #         self.VISITED_IDX += 1
+        #         # self.cum_reward = ret
+        # self.max_pts_reached = self.VISITED_IDX
+        # if state[2] < 0.01:
+        #     ret = -10
+        return ret
 
 
     ################################################################################

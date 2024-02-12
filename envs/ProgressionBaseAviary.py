@@ -197,6 +197,8 @@ class ProgressionBaseAviary(gym.Env):
         #### Set waypoints #########################################
         self.test_flag = test_flag
         self.window_size = window_size
+        self.cum_reward = 0
+        self.max_pts_reached = 0
         if waypoints is None:
             # (3,3): (x,y,z) x 3 points
             self.waypoints = np.random.uniform(low=-1, high=1, size=(self.window_size,2))
@@ -534,6 +536,7 @@ class ProgressionBaseAviary(gym.Env):
                                         np.array([np.random.uniform(0.2, 1.2) for z in
                                                   range(self.NUM_DRONES)])]).transpose().reshape(self.NUM_DRONES, 3)
             self.VISITED_IDX = 0
+            self.cum_reward = 0
 
     
     ################################################################################
