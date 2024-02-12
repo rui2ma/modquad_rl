@@ -206,7 +206,7 @@ class ProgressionBaseAviary(gym.Env):
             #                            [1,1,1]])
         else:
             self.waypoints = waypoints
-        self.VISITED_POS = []
+        self.VISITED_IDX = 0
         #### Set initial poses #####################################
         if initial_xyzs is None:
             self.INIT_XYZS = np.vstack([np.array([np.random.uniform(-1, 1) for x in range(self.NUM_DRONES)]), \

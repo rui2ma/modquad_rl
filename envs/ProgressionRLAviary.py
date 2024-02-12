@@ -319,7 +319,7 @@ class ProgressionRLAviary(ProgressionBaseAviary):
             obs_18 = np.zeros((self.NUM_DRONES,18))
 
             curr_pos = np.expand_dims(self._getDroneStateVector(0)[0:3],axis=0)     # drone xyz pos
-            visited_index = len(self.VISITED_POS)
+            visited_index = self.VISITED_IDX
             obs_waypoints = np.zeros((self.window_size,3))
             # obs_waypoints = np.zeros((3,self.window_size))
             window_surplus = self.window_size - self.waypoints[visited_index:,:].shape[0]
@@ -329,8 +329,7 @@ class ProgressionRLAviary(ProgressionBaseAviary):
                 obs_waypoints = np.vstack((self.waypoints[visited_index:,:],last_waypoint))
             else:
                 obs_waypoints = self.waypoints[visited_index:visited_index+self.window_size,:]
-            # print(obs_waypoints)
-            mag = np.expand_dims(np.linalg.norm(obs_waypoints - curr_pos,axis=1),axis=-1)
+            mag = np.expand_dims(np.linalg.norm(obs_waypoints - curr_pos,axis=1),axis=0)        #(1, num_waypoints)
             # obs_waypoints = (obs_waypoints - curr_pos)/(np.linalg.norm(obs_waypoints - curr_pos,axis=1))        # (window_sizex3)
             obs_waypoints = (obs_waypoints - curr_pos)
             # print(obs_waypoints)
@@ -338,8 +337,7 @@ class ProgressionRLAviary(ProgressionBaseAviary):
 
             obs = self._getDroneStateVector(0)
             obs_18[0, :] = np.hstack([obs[0:3], obs[20:], obs[10:13], obs[13:16]]).reshape(18,)
-
-            ret = np.hstack((obs_18, obs_waypoints,mag))        # (1,27) obs
+            ret = np.hstack((obs_18, obs_waypoints, mag))
             # for i in range(self.NUM_DRONES):
             #     #obs = self._clipAndNormalizeState(self._getDroneStateVector(i))
             #     obs = self._getDroneStateVector(i)
