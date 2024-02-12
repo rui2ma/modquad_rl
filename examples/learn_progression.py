@@ -45,7 +45,7 @@ from gym_pybullet_drones.utils.TensorboardCallback import TensorboardCallback
 
 DEFAULT_GUI = True
 DEFAULT_RECORD_VIDEO = True
-DEFAULT_OUTPUT_FOLDER = 'results'
+DEFAULT_OUTPUT_FOLDER = 'results/temp/'
 DEFAULT_COLAB = False
 
 DEFAULT_OBS = ObservationType('kin') # 'kin' or 'rgb'
@@ -140,8 +140,8 @@ def run(multiagent=DEFAULT_MA, output_folder=DEFAULT_OUTPUT_FOLDER, gui=DEFAULT_
 
     #### Show (and record a video of) the model's performance ##
     if not multiagent:
-        test_env = ProgressionAviary(waypoints=np.array([[0,0,1.5]]),
-                                     initial_xyzs=np.array([[-0.5,-0.5,0.5]]),
+        test_env = ProgressionAviary(waypoints=np.array([[-0.2, -0.2, 0.8],[-0.5,-0.5,0.5]]),
+                                     initial_xyzs=np.array([[-0.8,-0.8,0.2]]),
                                      test_flag=True,
                                      gui=gui,
                                      obs=DEFAULT_OBS,

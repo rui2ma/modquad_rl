@@ -533,6 +533,7 @@ class ProgressionBaseAviary(gym.Env):
                                         np.array([np.random.uniform(-1, 1) for y in range(self.NUM_DRONES)]), \
                                         np.array([np.random.uniform(0.2, 1.2) for z in
                                                   range(self.NUM_DRONES)])]).transpose().reshape(self.NUM_DRONES, 3)
+            self.VISITED_IDX = 0
 
     
     ################################################################################

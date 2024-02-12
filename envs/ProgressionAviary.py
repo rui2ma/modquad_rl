@@ -83,12 +83,13 @@ class ProgressionAviary(ProgressionRLAviary):
 
         """
         # state vector (29, ): pos,quat,rpy,vel,ang_v,last_clipped_action,rot
-
+        if self.VISITED_IDX > 0:
+            print(self.cum_reward)
         state = self._getDroneStateVector(0)
         b = 1e-3
         c = 1e-6
         if self.VISITED_IDX >= self.waypoints.shape[0]-1:    #finished all waypoints
-            ret = 10*self.waypoints.shape[0]
+            ret = 10
         else:
             ret = max(0, 2 - np.linalg.norm(self.TARGET_POS - state[0:3])) ** 2 - b * np.linalg.norm(
                 state[10:13]) - c * np.linalg.norm(state[13:16]) + self.cum_reward
