@@ -91,7 +91,7 @@ def run(multiagent=DEFAULT_MA, output_folder=DEFAULT_OUTPUT_FOLDER, gui=DEFAULT_
                     train_env,
                     policy_kwargs=dict(activation_fn=torch.nn.Tanh, net_arch=[dict(vf=[256,256], pi=[256,256])]),   #vf: actor, pi: critic
                     # tensorboard_log=filename+'/tb/',
-                    tensorboard_log='./tensorboard_logs/quadrotor_progression/',
+                    tensorboard_log='./tensorboard_logs/',
                     verbose=1)
 
         callback_on_best = StopTrainingOnRewardThreshold(reward_threshold=np.inf,
