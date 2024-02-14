@@ -26,6 +26,7 @@ class ProgressionBaseAviary(gym.Env):
     def __init__(self,
                  waypoints,
                  window_size,
+                 episode_len_second,
                  test_flag=False,
                  drone_model: DroneModel=DroneModel.CF2X,
                  num_drones: int=1,
@@ -199,6 +200,8 @@ class ProgressionBaseAviary(gym.Env):
         self.window_size = window_size
         self.cum_reward = 0
         self.max_pts_reached = 0
+        self.EPISODE_LEN_SEC = episode_len_second
+        self.EPISODE_LEN_STEP = self.EPISODE_LEN_SEC * self.PYB_FREQ
         if waypoints is None:
             # (3,3): (x,y,z) x 3 points
             self.waypoints = np.random.uniform(low=-1, high=1, size=(self.window_size,2))

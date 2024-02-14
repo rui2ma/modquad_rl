@@ -11,6 +11,7 @@ class ProgressionAviary(ProgressionRLAviary):
     def __init__(self,
                  waypoints=None,
                  window_size=2,
+                 episode_len_second=10,
                  drone_model: DroneModel=DroneModel.CF2X,
                  initial_xyzs=None,
                  initial_rpys=None,
@@ -51,9 +52,10 @@ class ProgressionAviary(ProgressionRLAviary):
             The type of action space (1 or 3D; RPMS, thurst and torques, or waypoint with PID control)
 
         """
-        self.EPISODE_LEN_SEC = 10
+        self.EPISODE_LEN_SEC = episode_len_second
         super().__init__(waypoints=waypoints,
                          window_size=window_size,
+                         episode_len_second=episode_len_second,
                          drone_model=drone_model,
                          num_drones=1,
                          initial_xyzs=initial_xyzs,
@@ -85,7 +87,7 @@ class ProgressionAviary(ProgressionRLAviary):
         state = self._getDroneStateVector(0)
         b = 1e-6
         c = 1e-6
-        if self.VISITED_IDX > self.waypoints.shape[0]-1:    #finished all waypoints
+        if self.VISITED_IDX >= self.waypoints.shape[0]:    #finished all waypoints
             ret = 10
         else:
             self.TARGET_POS = self.waypoints[self.VISITED_IDX, :]
@@ -129,8 +131,7 @@ class ProgressionAviary(ProgressionRLAviary):
 
         """
         state = self._getDroneStateVector(0)
-        if (state[2] < .05 or state[8] >= np.pi/2 or state[9] >= np.pi/2
-                or self.VISITED_IDX >= self.waypoints.shape[0]-1):
+        if (state[2] < .05 or self.VISITED_IDX >= self.waypoints.shape[0]):
             return True
         else:
             return False
