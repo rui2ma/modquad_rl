@@ -10,7 +10,7 @@ class ProgressionAviary(ProgressionRLAviary):
     
     def __init__(self,
                  waypoints=None,
-                 window_size=2,
+                 num_waypoints=2,
                  episode_len_second=10,
                  drone_model: DroneModel=DroneModel.CF2X,
                  initial_xyzs=None,
@@ -52,9 +52,8 @@ class ProgressionAviary(ProgressionRLAviary):
             The type of action space (1 or 3D; RPMS, thurst and torques, or waypoint with PID control)
 
         """
-        self.EPISODE_LEN_SEC = episode_len_second
         super().__init__(waypoints=waypoints,
-                         window_size=window_size,
+                         num_waypoints=num_waypoints,
                          episode_len_second=episode_len_second,
                          drone_model=drone_model,
                          num_drones=1,
@@ -70,7 +69,7 @@ class ProgressionAviary(ProgressionRLAviary):
                          test_flag = test_flag
                          )
         self.prev_pos = self.INIT_XYZS
-        self.TARGET_POS = self.waypoints[0, :]
+        self.TARGET_POS = self.waypoints[self.VISITED_IDX, :]
 
     ################################################################################
     
@@ -91,12 +90,10 @@ class ProgressionAviary(ProgressionRLAviary):
             ret = 10
         else:
             self.TARGET_POS = self.waypoints[self.VISITED_IDX, :]
-            ret = np.sqrt(max(0, 1 - np.linalg.norm(self.TARGET_POS - state[0:3]))) - b * np.linalg.norm(
-                state[10:13]) - c * np.linalg.norm(state[13:16]) + self.cum_reward
-            if np.linalg.norm(self.TARGET_POS-state[0:3]) < 0.01:
+            ret = max(max(0, 1 - np.linalg.norm(self.TARGET_POS - state[0:3])) - c * np.linalg.norm(state[13:16]) + self.VISITED_IDX, self.VISITED_IDX)
+            # ret = np.sqrt(max(0, 1 - np.linalg.norm(self.TARGET_POS - state[0:3]))) - c * np.linalg.norm(state[13:16]) + self.VISITED_IDX
+            if np.linalg.norm(self.TARGET_POS-state[0:3]) < 0.05:
                 self.VISITED_IDX += 1
-                self.cum_reward = ret
-        self.max_pts_reached = self.VISITED_IDX
         if state[2]<0.01:
             ret = -10
 
@@ -131,7 +128,7 @@ class ProgressionAviary(ProgressionRLAviary):
 
         """
         state = self._getDroneStateVector(0)
-        if (state[2] < .05 or self.VISITED_IDX >= self.waypoints.shape[0]):
+        if (state[2] < .01 or self.VISITED_IDX >= self.waypoints.shape[0]):
             return True
         else:
             return False

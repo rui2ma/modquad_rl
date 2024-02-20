@@ -91,7 +91,7 @@ def run(multiagent=DEFAULT_MA, output_folder=DEFAULT_OUTPUT_FOLDER, gui=DEFAULT_
                     train_env,
                     policy_kwargs=dict(activation_fn=torch.nn.Tanh, net_arch=[dict(vf=[256,256], pi=[256,256])]),   #vf: actor, pi: critic
                     # tensorboard_log=filename+'/tb/',
-                    tensorboard_log='./tensorboard_logs/',
+                    tensorboard_log='./results/tensorboard_logs/',
                     verbose=1)
 
         callback_on_best = StopTrainingOnRewardThreshold(reward_threshold=np.inf,
@@ -104,7 +104,7 @@ def run(multiagent=DEFAULT_MA, output_folder=DEFAULT_OUTPUT_FOLDER, gui=DEFAULT_
                                     verbose=1,
                                     best_model_save_path=filename+'/',
                                     log_path=filename+'/',
-                                    eval_freq=int(2000),
+                                    eval_freq=int(4000),
                                     deterministic=True,
                                     render=False)
 
@@ -123,7 +123,7 @@ def run(multiagent=DEFAULT_MA, output_folder=DEFAULT_OUTPUT_FOLDER, gui=DEFAULT_
             for j in range(data['timesteps'].shape[0]):
                 print(str(data['timesteps'][j])+","+str(data['results'][j][0]))
     else:
-        filename=os.path.join(output_folder, "save-02.12.2024_11.53.39")
+        filename=os.path.join(output_folder, "save-02.19.2024_22.03.11")
     ############################################################
     ############################################################
     ############################################################
@@ -140,8 +140,8 @@ def run(multiagent=DEFAULT_MA, output_folder=DEFAULT_OUTPUT_FOLDER, gui=DEFAULT_
 
     #### Show (and record a video of) the model's performance ##
     if not multiagent:
-        test_env = ProgressionAviary(waypoints=np.array([[-0.2,-0.2,0.2],[-0.5,-0.5,0.2]]),
-                                     initial_xyzs=np.array([[-0.8,-0.8,0.2]]),
+        test_env = ProgressionAviary(waypoints=np.array([[-0.2,-0.2,0.8],[-0.2,-0.2,0.5]]),
+                                     initial_xyzs=np.array([[-0.2,-0.2,0.5]]),
                                      test_flag=True,
                                      gui=gui,
                                      obs=DEFAULT_OBS,

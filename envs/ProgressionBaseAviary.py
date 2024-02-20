@@ -25,7 +25,7 @@ class ProgressionBaseAviary(gym.Env):
 
     def __init__(self,
                  waypoints,
-                 window_size,
+                 num_waypoints,
                  episode_len_second,
                  test_flag=False,
                  drone_model: DroneModel=DroneModel.CF2X,
@@ -197,30 +197,27 @@ class ProgressionBaseAviary(gym.Env):
                                                             )
         #### Set waypoints #########################################
         self.test_flag = test_flag
-        self.window_size = window_size
         self.cum_reward = 0
         self.max_pts_reached = 0
         self.EPISODE_LEN_SEC = episode_len_second
         self.EPISODE_LEN_STEP = self.EPISODE_LEN_SEC * self.PYB_FREQ
+        
+        self.num_waypoints = num_waypoints
         if waypoints is None:
             # (3,3): (x,y,z) x 3 points
-            self.waypoints = np.random.uniform(low=-1, high=1, size=(self.window_size,2))
-            self.waypoints = np.hstack((self.waypoints, np.random.uniform(low=0.2, high=1.2, size=(self.window_size,1))))
-            # self.waypoints = np.array([[0,1,1],     # each column is each waypoint coordinate
-            #                            [0,0,1],
-            #                            [1,1,1]])
+            self.waypoints = np.random.uniform(low=-1, high=1, size=(self.num_waypoints,2))
+            self.waypoints = np.hstack((self.waypoints, np.random.uniform(low=0.2, high=1.2, size=(self.num_waypoints,1))))
+
         else:
             self.waypoints = waypoints
+            self.num_waypoints = self.waypoints.shape[0]
+        
         self.VISITED_IDX = 0
         #### Set initial poses #####################################
         if initial_xyzs is None:
             self.INIT_XYZS = np.vstack([np.array([np.random.uniform(-1, 1) for x in range(self.NUM_DRONES)]), \
                                         np.array([np.random.uniform(-1, 1) for y in range(self.NUM_DRONES)]), \
                                         np.array([np.random.uniform(0.2, 1.2) for z in range(self.NUM_DRONES)])]).transpose().reshape(self.NUM_DRONES, 3)
-            # self.INIT_XYZS = np.array([[0,0,0.1]])
-            # self.INIT_XYZS = np.vstack([np.array([x*4*self.L for x in range(self.NUM_DRONES)]), \
-            #                             np.array([y*4*self.L for y in range(self.NUM_DRONES)]), \
-            #                             np.ones(self.NUM_DRONES) * (self.COLLISION_H/2-self.COLLISION_Z_OFFSET+.1)]).transpose().reshape(self.NUM_DRONES, 3)
         elif np.array(initial_xyzs).shape == (self.NUM_DRONES,3):
             self.INIT_XYZS = initial_xyzs
         else:
@@ -532,14 +529,14 @@ class ProgressionBaseAviary(gym.Env):
 
         # modified by rui
         if not self.test_flag:
-            self.waypoints = np.random.uniform(low=-1, high=1, size=(self.window_size, 2))
-            self.waypoints = np.hstack((self.waypoints, np.random.uniform(low=0.2, high=1.2, size=(self.window_size, 1))))
+            self.waypoints = np.random.uniform(low=-1, high=1, size=(self.num_waypoints, 2))
+            self.waypoints = np.hstack((self.waypoints, np.random.uniform(low=0.2, high=1.2, size=(self.num_waypoints, 1))))
             self.INIT_XYZS = np.vstack([np.array([np.random.uniform(-1, 1) for x in range(self.NUM_DRONES)]), \
                                         np.array([np.random.uniform(-1, 1) for y in range(self.NUM_DRONES)]), \
                                         np.array([np.random.uniform(0.2, 1.2) for z in
                                                   range(self.NUM_DRONES)])]).transpose().reshape(self.NUM_DRONES, 3)
-            self.VISITED_IDX = 0
-            self.cum_reward = 0
+            self.VISITED_IDX = np.random.choice(np.arange(self.waypoints.shape[0]))
+            # self.cum_reward = 0
 
     
     ################################################################################
