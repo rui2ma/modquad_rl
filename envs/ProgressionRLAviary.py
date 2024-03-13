@@ -197,7 +197,7 @@ class ProgressionRLAviary(ProgressionBaseAviary):
         for k in range(action.shape[0]):
             target = action[k, :]
             if self.ACT_TYPE == ActionType.RPM:
-                rpm[k,:] = np.array(self.HOVER_RPM * (1+0.05*target))
+                rpm[k,:] = np.array(self.HOVER_RPM * (1+0.25*target))       # modified by rui
             elif self.ACT_TYPE == ActionType.PID:
                 state = self._getDroneStateVector(k)
                 next_pos = self._calculateNextStep(
@@ -268,8 +268,8 @@ class ProgressionRLAviary(ProgressionBaseAviary):
             #### Observation vector ### X        Y        Z       r11 ... r33       VX       VY       VZ       WX       WY       WZ
             lo = -np.inf
             hi = np.inf
-            obs_lower_bound = np.array([[lo,lo,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,lo,lo,lo,lo,lo,lo] for i in range(self.NUM_DRONES)])
-            obs_upper_bound = np.array([[hi,hi,hi,1,1,1,1,1,1,1,1,1,hi,hi,hi,hi,hi,hi] for i in range(self.NUM_DRONES)])
+            obs_lower_bound = np.array([[0,-1,-1,-1,-1,-1,-1,-1,-1,-1,lo,lo,lo,lo,lo,lo] for i in range(self.NUM_DRONES)])
+            obs_upper_bound = np.array([[hi,1,1,1,1,1,1,1,1,1,hi,hi,hi,hi,hi,hi] for i in range(self.NUM_DRONES)])
             #### Add action buffer to observation space ################
             act_lo = -1
             act_hi = +1
@@ -284,12 +284,12 @@ class ProgressionRLAviary(ProgressionBaseAviary):
                     obs_lower_bound = np.hstack([obs_lower_bound, np.array([[act_lo] for i in range(self.NUM_DRONES)])])
                     obs_upper_bound = np.hstack([obs_upper_bound, np.array([[act_hi] for i in range(self.NUM_DRONES)])])
             #obs_waypoints
-            obs_lower_bound = np.hstack([obs_lower_bound, np.array([[-1,-1,-1]*self.num_waypoints for i in range(self.NUM_DRONES)])])
-            obs_upper_bound = np.hstack([obs_upper_bound, np.array([[1,1,1]*self.num_waypoints for i in range(self.NUM_DRONES)])])
+            obs_lower_bound = np.hstack([obs_lower_bound, np.array([[lo,lo,lo]*self.num_waypoints for i in range(self.NUM_DRONES)])])
+            obs_upper_bound = np.hstack([obs_upper_bound, np.array([[hi,hi,hi]*self.num_waypoints for i in range(self.NUM_DRONES)])])
 
             #mag
-            obs_lower_bound = np.hstack([obs_lower_bound, np.array([[0]*self.num_waypoints for i in range(self.NUM_DRONES)])])
-            obs_upper_bound = np.hstack([obs_upper_bound, np.array([[hi]*self.num_waypoints for i in range(self.NUM_DRONES)])])
+            # obs_lower_bound = np.hstack([obs_lower_bound, np.array([[0]*self.num_waypoints for i in range(self.NUM_DRONES)])])
+            # obs_upper_bound = np.hstack([obs_upper_bound, np.array([[hi]*self.num_waypoints for i in range(self.NUM_DRONES)])])
             return spaces.Box(low=obs_lower_bound, high=obs_upper_bound, dtype=np.float32)
             ############################################################
         else:
@@ -323,22 +323,16 @@ class ProgressionRLAviary(ProgressionBaseAviary):
         elif self.OBS_TYPE == ObservationType.KIN:
             ############################################################
             #### OBS SPACE OF SIZE 18 + N future waypoints
-            obs_18 = np.zeros((self.NUM_DRONES,18))
-
+            obs_16 = np.zeros((self.NUM_DRONES,16))
+            
             curr_pos = np.expand_dims(self._getDroneStateVector(0)[0:3],axis=0)     # drone xyz pos
             obs_waypoints = (self.waypoints - curr_pos)
-            mag = np.expand_dims(np.linalg.norm(obs_waypoints, axis=1),axis=0)
-            print(mag)
-            obs_waypoints = obs_waypoints/mag.T
             obs_waypoints[:self.VISITED_IDX,:] = 0
-            mag[0,:self.VISITED_IDX] = 0
             obs_waypoints = obs_waypoints.reshape(1,-1)   #[xyz_1,xyz_2,...]
 
             obs = self._getDroneStateVector(0)
-            obs_18[0, :] = np.hstack([obs[0:3], obs[20:], obs[10:13], obs[13:16]]).reshape(18,)
-            # print((self.EPISODE_LEN_STEP - self.step_counter)/self.EPISODE_LEN_STEP)
-            # remain_T = np.array([[(self.EPISODE_LEN_STEP - self.step_counter)/self.EPISODE_LEN_STEP]])
-            ret = np.hstack((obs_18, obs_waypoints, mag))
+            obs_16[0, :] = np.hstack([obs[2],obs[16:], obs[10:13], obs[13:16]]).reshape(16,)
+            ret = np.hstack((obs_16, obs_waypoints))
             return ret
             ############################################################
         else:

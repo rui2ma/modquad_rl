@@ -14,6 +14,7 @@ import pybullet_data
 import gymnasium as gym
 from gym_pybullet_drones.utils.enums import DroneModel, Physics, ImageType
 import tensorflow as tf
+# from rotor import NoiseProfile
 
 
 class ProgressionBaseAviary(gym.Env):
@@ -76,6 +77,8 @@ class ProgressionBaseAviary(gym.Env):
 
         """
         #### Constants #############################################
+        self.a = np.array([0.00000162174764, -0.00144854262, -0.22694967])
+        self.b = np.array([0.000000000108572988, -0.000000397937603, 0.000494028559, -0.2001064])
         self.G = 9.8
         self.RAD2DEG = 180/np.pi
         self.DEG2RAD = np.pi/180
@@ -96,7 +99,7 @@ class ProgressionBaseAviary(gym.Env):
         self.PHYSICS = physics
         self.OBSTACLES = obstacles
         self.USER_DEBUG = user_debug_gui
-        self.URDF = self.DRONE_MODEL.value + ".urdf"
+        self.URDF = self.DRONE_MODEL.value[0] + ".urdf"
         self.OUTPUT_FOLDER = output_folder
         #### Load the drone properties from the .urdf file #########
         self.M, \
@@ -205,8 +208,10 @@ class ProgressionBaseAviary(gym.Env):
         self.num_waypoints = num_waypoints
         if waypoints is None:
             # (3,3): (x,y,z) x 3 points
-            self.waypoints = np.random.uniform(low=-1, high=1, size=(self.num_waypoints,2))
-            self.waypoints = np.hstack((self.waypoints, np.random.uniform(low=0.2, high=1.2, size=(self.num_waypoints,1))))
+            self.waypoints = np.random.uniform(low=-0.5, high=0.5, size=(self.num_waypoints,2))
+            self.waypoints = np.hstack((self.waypoints, np.random.uniform(low=0.2, high=1.5, size=(self.num_waypoints,1))))
+            # self.waypoints = np.array([[0,0,1],
+            #                            [0,0,0.8]])
 
         else:
             self.waypoints = waypoints
@@ -215,9 +220,9 @@ class ProgressionBaseAviary(gym.Env):
         self.VISITED_IDX = 0
         #### Set initial poses #####################################
         if initial_xyzs is None:
-            self.INIT_XYZS = np.vstack([np.array([np.random.uniform(-1, 1) for x in range(self.NUM_DRONES)]), \
-                                        np.array([np.random.uniform(-1, 1) for y in range(self.NUM_DRONES)]), \
-                                        np.array([np.random.uniform(0.2, 1.2) for z in range(self.NUM_DRONES)])]).transpose().reshape(self.NUM_DRONES, 3)
+            self.INIT_XYZS = np.vstack([np.array([np.random.uniform(-0.5, 0.5) for x in range(self.NUM_DRONES)]), \
+                                        np.array([np.random.uniform(-0.5, 0.5) for y in range(self.NUM_DRONES)]), \
+                                        np.array([np.random.uniform(0.2, 1.5) for z in range(self.NUM_DRONES)])]).transpose().reshape(self.NUM_DRONES, 3)
         elif np.array(initial_xyzs).shape == (self.NUM_DRONES,3):
             self.INIT_XYZS = initial_xyzs
         else:
@@ -529,15 +534,22 @@ class ProgressionBaseAviary(gym.Env):
 
         # modified by rui
         if not self.test_flag:
-            self.waypoints = np.random.uniform(low=-1, high=1, size=(self.num_waypoints, 2))
-            self.waypoints = np.hstack((self.waypoints, np.random.uniform(low=0.2, high=1.2, size=(self.num_waypoints, 1))))
+            self.waypoints = np.random.uniform(low=-1, high=1, size=(self.num_waypoints,2))
+            self.waypoints = np.hstack((self.waypoints, np.random.uniform(low=0.2, high=1.2, size=(self.num_waypoints,1))))
+            # self.waypoints = np.array([[-0.2,-0.2,1], [0,0,1]])
             self.INIT_XYZS = np.vstack([np.array([np.random.uniform(-1, 1) for x in range(self.NUM_DRONES)]), \
                                         np.array([np.random.uniform(-1, 1) for y in range(self.NUM_DRONES)]), \
-                                        np.array([np.random.uniform(0.2, 1.2) for z in
-                                                  range(self.NUM_DRONES)])]).transpose().reshape(self.NUM_DRONES, 3)
+                                        np.array([np.random.uniform(0.2, 1.2) for z in range(self.NUM_DRONES)])]).transpose().reshape(self.NUM_DRONES, 3)
+            self.INIT_RPYS = np.vstack([np.array([np.random.uniform(-np.pi/8, np.pi/8) for x in range(self.NUM_DRONES)]), \
+                                        np.array([np.random.uniform(-np.pi/8, np.pi/8) for y in range(self.NUM_DRONES)]), \
+                                        np.array([np.random.uniform(-np.pi/2, np.pi/2) for z in range(self.NUM_DRONES)])]).transpose().reshape(self.NUM_DRONES, 3)
             self.VISITED_IDX = np.random.choice(np.arange(self.waypoints.shape[0]))
-            # self.cum_reward = 0
-
+            # self.VISITED_IDX = 0
+            # self.rpy = np.array([[np.random.uniform(-np.pi/4, np.pi/4), np.random.uniform(-np.pi/4, np.pi/4), np.random.uniform(-np.pi/4, np.pi/4)]])
+            # self.vel = np.array([[np.random.uniform(-0.5, 0.5), np.random.uniform(-0.5, 0.5), np.random.uniform(-0.5, 0.5)]])
+            # self.ang_v = np.array([[np.random.uniform(-0.1, 0.1), np.random.uniform(-0.1, 0.1), np.random.uniform(-0.1, 0.1)]])
+        else:
+            self.VISITED_IDX = 0
     
     ################################################################################
 
@@ -634,8 +646,8 @@ class ProgressionBaseAviary(gym.Env):
 
         """
         state = np.hstack([self.pos[nth_drone, :], self.quat[nth_drone, :], self.rpy[nth_drone, :],
-                           self.vel[nth_drone, :], self.ang_v[nth_drone, :], self.last_clipped_action[nth_drone, :], self.rot_mat[nth_drone, :]])
-        return state.reshape(29,)
+                           self.vel[nth_drone, :], self.ang_v[nth_drone, :], self.rot_mat[nth_drone, :]])
+        return state.reshape(25,)
 
     ################################################################################
 
@@ -766,9 +778,18 @@ class ProgressionBaseAviary(gym.Env):
         nth_drone : int
             The ordinal number/position of the desired drone in list self.DRONE_IDS.
 
+        drone quadrants
+         1 | 2
+         -- --
+         0 | 3
         """
-        forces = np.array(rpm**2)*self.KF
-        torques = np.array(rpm**2)*self.KM
+        forces = np.array(rpm**2)*self.KF       # (4,)
+        torques = np.array(rpm**2)*self.KM      # (4,)
+        a = np.tile(self.a, forces.shape).reshape(-1,3)     # (4,3)
+        a[:,-1] -= forces
+        l = np.maximum((-a[:,1]+np.sqrt(a[:,1]**2 - 4*a[:,0]*a[:,2]))/(2*a[:,0]),(-a[:,1]-np.sqrt(a[:,1]**2 - 4*a[:,0]*a[:,2]))/(2*a[:,0]))     # (4,)
+        sigma = np.sum(np.vstack((l**3,l**2,l,l**0)).T * self.b,axis=1)    # (4,)
+        forces += np.random.normal(0,sigma)
         if self.DRONE_MODEL == DroneModel.RACE:
             torques = -torques
         z_torque = (-torques[0] + torques[1] - torques[2] + torques[3])

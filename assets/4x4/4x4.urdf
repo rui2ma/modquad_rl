@@ -1,0 +1,2037 @@
+<?xml version="1.0"?>
+<robot name="4x4">
+    <properties arm="0.0397" kf="3.16e-10" km="7.94e-12" thrust2weight="2.25" max_speed_kmh="30" gnd_eff_coeff="11.36859" prop_radius="2.31348e-2" drag_coeff_xy="9.1785e-7" drag_coeff_z="10.311e-7" dw_coeff_1="2267.18" dw_coeff_2=".16" dw_coeff_3="-.11" />
+    <link name="robot_base">
+        <inertial>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <inertia ixx="0.11635200000000001" ixz="0.0" ixy="0.0" iyy="0.11635200000000001" iyz="0.0" izz="0.23040000000000002" />
+            <mass value="2.16" />
+        </inertial>
+                
+        <collision name="MultiRotor">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.8 0.8 0.08" />
+            </geometry>
+        </collision>
+        
+    <visual name="Shape1">
+        <origin xyz="0.3 0.3 0.040000" rpy="0 -1.570796 0.000000" />
+        <geometry>
+            <mesh filename="./module_vis.dae" />
+        </geometry>
+        <material name="Shape0_material">
+            <color rgba="0.1804 0.1804 0.1804 1.0" />
+        </material>
+    </visual>
+            
+    <visual name="Shape2">
+        <origin xyz="0.3 0.1 0.040000" rpy="0 -1.570796 0.000000" />
+        <geometry>
+            <mesh filename="./module_vis.dae" />
+        </geometry>
+        <material name="Shape0_material">
+            <color rgba="0.1804 0.1804 0.1804 1.0" />
+        </material>
+    </visual>
+            
+    <visual name="Shape3">
+        <origin xyz="0.3 -0.1 0.040000" rpy="0 -1.570796 0.000000" />
+        <geometry>
+            <mesh filename="./module_vis.dae" />
+        </geometry>
+        <material name="Shape0_material">
+            <color rgba="0.1804 0.1804 0.1804 1.0" />
+        </material>
+    </visual>
+            
+    <visual name="Shape4">
+        <origin xyz="0.3 -0.3 0.040000" rpy="0 -1.570796 0.000000" />
+        <geometry>
+            <mesh filename="./module_vis.dae" />
+        </geometry>
+        <material name="Shape0_material">
+            <color rgba="0.1804 0.1804 0.1804 1.0" />
+        </material>
+    </visual>
+            
+    <visual name="Shape5">
+        <origin xyz="0.1 0.3 0.040000" rpy="0 -1.570796 0.000000" />
+        <geometry>
+            <mesh filename="./module_vis.dae" />
+        </geometry>
+        <material name="Shape0_material">
+            <color rgba="0.1804 0.1804 0.1804 1.0" />
+        </material>
+    </visual>
+            
+    <visual name="Shape6">
+        <origin xyz="0.1 0.1 0.040000" rpy="0 -1.570796 0.000000" />
+        <geometry>
+            <mesh filename="./module_vis.dae" />
+        </geometry>
+        <material name="Shape0_material">
+            <color rgba="0.1804 0.1804 0.1804 1.0" />
+        </material>
+    </visual>
+            
+    <visual name="Shape7">
+        <origin xyz="0.1 -0.1 0.040000" rpy="0 -1.570796 0.000000" />
+        <geometry>
+            <mesh filename="./module_vis.dae" />
+        </geometry>
+        <material name="Shape0_material">
+            <color rgba="0.1804 0.1804 0.1804 1.0" />
+        </material>
+    </visual>
+            
+    <visual name="Shape8">
+        <origin xyz="0.1 -0.3 0.040000" rpy="0 -1.570796 0.000000" />
+        <geometry>
+            <mesh filename="./module_vis.dae" />
+        </geometry>
+        <material name="Shape0_material">
+            <color rgba="0.1804 0.1804 0.1804 1.0" />
+        </material>
+    </visual>
+            
+    <visual name="Shape9">
+        <origin xyz="-0.1 0.3 0.040000" rpy="0 -1.570796 0.000000" />
+        <geometry>
+            <mesh filename="./module_vis.dae" />
+        </geometry>
+        <material name="Shape0_material">
+            <color rgba="0.1804 0.1804 0.1804 1.0" />
+        </material>
+    </visual>
+            
+    <visual name="Shape10">
+        <origin xyz="-0.1 0.1 0.040000" rpy="0 -1.570796 0.000000" />
+        <geometry>
+            <mesh filename="./module_vis.dae" />
+        </geometry>
+        <material name="Shape0_material">
+            <color rgba="0.1804 0.1804 0.1804 1.0" />
+        </material>
+    </visual>
+            
+    <visual name="Shape11">
+        <origin xyz="-0.1 -0.1 0.040000" rpy="0 -1.570796 0.000000" />
+        <geometry>
+            <mesh filename="./module_vis.dae" />
+        </geometry>
+        <material name="Shape0_material">
+            <color rgba="0.1804 0.1804 0.1804 1.0" />
+        </material>
+    </visual>
+            
+    <visual name="Shape12">
+        <origin xyz="-0.1 -0.3 0.040000" rpy="0 -1.570796 0.000000" />
+        <geometry>
+            <mesh filename="./module_vis.dae" />
+        </geometry>
+        <material name="Shape0_material">
+            <color rgba="0.1804 0.1804 0.1804 1.0" />
+        </material>
+    </visual>
+            
+    <visual name="Shape13">
+        <origin xyz="-0.3 0.3 0.040000" rpy="0 -1.570796 0.000000" />
+        <geometry>
+            <mesh filename="./module_vis.dae" />
+        </geometry>
+        <material name="Shape0_material">
+            <color rgba="0.1804 0.1804 0.1804 1.0" />
+        </material>
+    </visual>
+            
+    <visual name="Shape14">
+        <origin xyz="-0.3 0.1 0.040000" rpy="0 -1.570796 0.000000" />
+        <geometry>
+            <mesh filename="./module_vis.dae" />
+        </geometry>
+        <material name="Shape0_material">
+            <color rgba="0.1804 0.1804 0.1804 1.0" />
+        </material>
+    </visual>
+            
+    <visual name="Shape15">
+        <origin xyz="-0.3 -0.1 0.040000" rpy="0 -1.570796 0.000000" />
+        <geometry>
+            <mesh filename="./module_vis.dae" />
+        </geometry>
+        <material name="Shape0_material">
+            <color rgba="0.1804 0.1804 0.1804 1.0" />
+        </material>
+    </visual>
+            
+    <visual name="Shape16">
+        <origin xyz="-0.3 -0.3 0.040000" rpy="0 -1.570796 0.000000" />
+        <geometry>
+            <mesh filename="./module_vis.dae" />
+        </geometry>
+        <material name="Shape0_material">
+            <color rgba="0.1804 0.1804 0.1804 1.0" />
+        </material>
+    </visual>
+            
+    </link>
+        
+    <joint name="propeller1" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable1" />
+        <origin xyz="0.35 0.25 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable1">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable1">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body1">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller2" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable2" />
+        <origin xyz="0.25 0.25 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable2">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable2">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body2">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller3" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable3" />
+        <origin xyz="0.25 0.35 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable3">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable3">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body3">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller4" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable4" />
+        <origin xyz="0.35 0.35 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable4">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable4">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body4">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller5" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable5" />
+        <origin xyz="0.35 0.05 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable5">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable5">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body5">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller6" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable6" />
+        <origin xyz="0.25 0.05 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable6">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable6">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body6">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller7" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable7" />
+        <origin xyz="0.25 0.15000000000000002 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable7">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable7">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body7">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller8" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable8" />
+        <origin xyz="0.35 0.15000000000000002 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable8">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable8">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body8">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller9" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable9" />
+        <origin xyz="0.35 -0.15000000000000002 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable9">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable9">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body9">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller10" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable10" />
+        <origin xyz="0.25 -0.15000000000000002 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable10">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable10">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body10">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller11" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable11" />
+        <origin xyz="0.25 -0.05 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable11">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable11">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body11">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller12" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable12" />
+        <origin xyz="0.35 -0.05 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable12">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable12">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body12">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller13" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable13" />
+        <origin xyz="0.35 -0.35 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable13">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable13">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body13">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller14" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable14" />
+        <origin xyz="0.25 -0.35 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable14">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable14">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body14">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller15" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable15" />
+        <origin xyz="0.25 -0.25 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable15">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable15">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body15">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller16" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable16" />
+        <origin xyz="0.35 -0.25 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable16">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable16">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body16">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller17" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable17" />
+        <origin xyz="0.15000000000000002 0.25 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable17">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable17">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body17">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller18" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable18" />
+        <origin xyz="0.05 0.25 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable18">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable18">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body18">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller19" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable19" />
+        <origin xyz="0.05 0.35 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable19">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable19">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body19">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller20" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable20" />
+        <origin xyz="0.15000000000000002 0.35 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable20">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable20">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body20">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller21" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable21" />
+        <origin xyz="0.15000000000000002 0.05 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable21">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable21">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body21">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller22" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable22" />
+        <origin xyz="0.05 0.05 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable22">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable22">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body22">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller23" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable23" />
+        <origin xyz="0.05 0.15000000000000002 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable23">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable23">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body23">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller24" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable24" />
+        <origin xyz="0.15000000000000002 0.15000000000000002 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable24">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable24">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body24">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller25" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable25" />
+        <origin xyz="0.15000000000000002 -0.15000000000000002 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable25">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable25">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body25">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller26" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable26" />
+        <origin xyz="0.05 -0.15000000000000002 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable26">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable26">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body26">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller27" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable27" />
+        <origin xyz="0.05 -0.05 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable27">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable27">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body27">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller28" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable28" />
+        <origin xyz="0.15000000000000002 -0.05 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable28">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable28">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body28">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller29" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable29" />
+        <origin xyz="0.15000000000000002 -0.35 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable29">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable29">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body29">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller30" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable30" />
+        <origin xyz="0.05 -0.35 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable30">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable30">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body30">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller31" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable31" />
+        <origin xyz="0.05 -0.25 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable31">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable31">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body31">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller32" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable32" />
+        <origin xyz="0.15000000000000002 -0.25 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable32">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable32">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body32">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller33" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable33" />
+        <origin xyz="-0.05 0.25 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable33">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable33">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body33">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller34" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable34" />
+        <origin xyz="-0.15000000000000002 0.25 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable34">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable34">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body34">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller35" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable35" />
+        <origin xyz="-0.15000000000000002 0.35 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable35">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable35">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body35">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller36" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable36" />
+        <origin xyz="-0.05 0.35 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable36">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable36">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body36">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller37" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable37" />
+        <origin xyz="-0.05 0.05 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable37">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable37">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body37">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller38" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable38" />
+        <origin xyz="-0.15000000000000002 0.05 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable38">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable38">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body38">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller39" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable39" />
+        <origin xyz="-0.15000000000000002 0.15000000000000002 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable39">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable39">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body39">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller40" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable40" />
+        <origin xyz="-0.05 0.15000000000000002 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable40">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable40">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body40">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller41" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable41" />
+        <origin xyz="-0.05 -0.15000000000000002 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable41">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable41">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body41">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller42" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable42" />
+        <origin xyz="-0.15000000000000002 -0.15000000000000002 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable42">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable42">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body42">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller43" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable43" />
+        <origin xyz="-0.15000000000000002 -0.05 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable43">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable43">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body43">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller44" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable44" />
+        <origin xyz="-0.05 -0.05 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable44">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable44">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body44">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller45" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable45" />
+        <origin xyz="-0.05 -0.35 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable45">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable45">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body45">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller46" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable46" />
+        <origin xyz="-0.15000000000000002 -0.35 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable46">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable46">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body46">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller47" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable47" />
+        <origin xyz="-0.15000000000000002 -0.25 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable47">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable47">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body47">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller48" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable48" />
+        <origin xyz="-0.05 -0.25 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable48">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable48">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body48">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller49" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable49" />
+        <origin xyz="-0.25 0.25 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable49">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable49">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body49">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller50" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable50" />
+        <origin xyz="-0.35 0.25 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable50">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable50">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body50">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller51" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable51" />
+        <origin xyz="-0.35 0.35 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable51">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable51">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body51">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller52" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable52" />
+        <origin xyz="-0.25 0.35 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable52">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable52">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body52">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller53" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable53" />
+        <origin xyz="-0.25 0.05 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable53">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable53">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body53">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller54" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable54" />
+        <origin xyz="-0.35 0.05 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable54">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable54">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body54">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller55" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable55" />
+        <origin xyz="-0.35 0.15000000000000002 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable55">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable55">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body55">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller56" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable56" />
+        <origin xyz="-0.25 0.15000000000000002 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable56">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable56">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body56">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller57" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable57" />
+        <origin xyz="-0.25 -0.15000000000000002 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable57">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable57">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body57">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller58" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable58" />
+        <origin xyz="-0.35 -0.15000000000000002 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable58">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable58">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body58">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller59" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable59" />
+        <origin xyz="-0.35 -0.05 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable59">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable59">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body59">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller60" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable60" />
+        <origin xyz="-0.25 -0.05 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable60">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable60">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body60">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller61" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable61" />
+        <origin xyz="-0.25 -0.35 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable61">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable61">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body61">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller62" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable62" />
+        <origin xyz="-0.35 -0.35 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable62">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable62">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body62">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller63" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable63" />
+        <origin xyz="-0.35 -0.25 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable63">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable63">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body63">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+    <joint name="propeller64" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="robot_base" />
+        <child link="propellerrespondable64" />
+        <origin xyz="-0.25 -0.25 0.03" rpy="0 0 0" />
+    </joint>
+    <link name="propellerrespondable64">
+        <inertial>
+            <origin rpy="0 0 0" xyz="-0.000000 0.000000 0.012000" />
+            <inertia izz="1.5977926901062e-07" ixx="8.2325171633286e-08" ixy="-5.0583716089947e-21" iyz="-5.6129890954029e-16" iyy="8.2325156656747e-08" ixz="5.7933230213793e-16" />
+            <mass value="0.0" />
+        </inertial>
+        <collision name="propeller_respondable64">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="3.141593 3.141593 1.865350" />
+            <geometry>
+                <cylinder length="0.0075362827628851" radius="0.024999996647239" />
+            </geometry>
+        </collision>
+        <visual name="propeller_body64">
+            <origin xyz="-0.000000 0.000000 0.012000" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="./propeller_vis.dae" />
+            </geometry>
+            <material name="propellerbody_material">
+                <color rgba="1 0.5294 0 0.9" />
+            </material>
+        </visual>
+    </link>
+                
+</robot>
+        

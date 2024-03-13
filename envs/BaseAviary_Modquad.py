@@ -474,8 +474,8 @@ class BaseAviary(gym.Env):
         self.GUI_INPUT_TEXT = -1*np.ones(self.NUM_DRONES)
         self.USE_GUI_RPM=False
         self.last_input_switch = 0
-        self.last_clipped_action = np.zeros((self.NUM_DRONES, 8))
-        self.gui_input = np.zeros(4)
+        self.last_clipped_action = np.zeros((self.NUM_DRONES, 8))       # modified by rui
+        self.gui_input = np.zeros(8)        # modified by rui
         #### Initialize the drones kinemaatic information ##########
         self.pos = np.zeros((self.NUM_DRONES, 3))
         self.quat = np.zeros((self.NUM_DRONES, 4))
@@ -493,7 +493,7 @@ class BaseAviary(gym.Env):
         #### Load ground plane, drone and obstacles models #########
         self.PLANE_ID = p.loadURDF("plane.urdf", physicsClientId=self.CLIENT)
 
-        self.DRONE_IDS = np.array([p.loadURDF('/Users/ruirui/gym-pybullet-drones/gym_pybullet_drones/assets/2x1_modquad/'+self.URDF,
+        self.DRONE_IDS = np.array([p.loadURDF('/home/ruirui/gym-pybullet-drones/gym_pybullet_drones/assets/2x1_modquad/'+self.URDF,
                                               self.INIT_XYZS[i,:],
                                               p.getQuaternionFromEuler(self.INIT_RPYS[i,:]),
                                               flags = p.URDF_USE_INERTIA_FROM_FILE,

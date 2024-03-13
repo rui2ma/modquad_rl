@@ -78,7 +78,8 @@ def run(multiagent=DEFAULT_MA, output_folder=DEFAULT_OUTPUT_FOLDER, gui=DEFAULT_
                     train_env,
                     policy_kwargs=dict(activation_fn=torch.nn.Tanh, net_arch=[dict(vf=[256,256], pi=[256,256])]),   #vf: actor, pi: critic
                     # tensorboard_log=filename+'/tb/',
-                    verbose=1)
+                    verbose=1,
+                    device="cpu")
 
         callback_on_best = StopTrainingOnRewardThreshold(reward_threshold=np.inf,
                                                         verbose=1)
@@ -102,7 +103,7 @@ def run(multiagent=DEFAULT_MA, output_folder=DEFAULT_OUTPUT_FOLDER, gui=DEFAULT_
             for j in range(data['timesteps'].shape[0]):
                 print(str(data['timesteps'][j])+","+str(data['results'][j][0]))
     else:
-        filename=os.path.join(output_folder, "2x1_1waypoint_far")
+        filename=os.path.join(output_folder, "save-02.23.2024_16.22.02")
     ############################################################
     ############################################################
     ############################################################
@@ -122,7 +123,7 @@ def run(multiagent=DEFAULT_MA, output_folder=DEFAULT_OUTPUT_FOLDER, gui=DEFAULT_
         test_env = HoverAviary(gui=gui,
                                obs=DEFAULT_OBS,
                                act=DEFAULT_ACT,
-                               initial_xyzs=np.array([[-0.5,-0.5,0.05]]),
+                               initial_xyzs=np.array([[-0.5,-0.5,0.2]]),
                                record=record_video)
         test_env_nogui = HoverAviary(obs=DEFAULT_OBS, act=DEFAULT_ACT)
     else:
@@ -146,7 +147,7 @@ def run(multiagent=DEFAULT_MA, output_folder=DEFAULT_OUTPUT_FOLDER, gui=DEFAULT_
 
     obs, info = test_env.reset(seed=42, options={})
     start = time.time()
-    for i in range((test_env.EPISODE_LEN_SEC)*test_env.CTRL_FREQ):
+    for i in range((test_env.EPISODE_LEN_SEC+5)*test_env.CTRL_FREQ):
         action, _states = model.predict(obs,
                                         deterministic=True
                                         )

@@ -63,7 +63,7 @@ def run(multiagent=DEFAULT_MA, output_folder=DEFAULT_OUTPUT_FOLDER, gui=DEFAULT_
         if not multiagent:
             train_env = make_vec_env(ProgressionAviary,
                                     env_kwargs=dict(obs=DEFAULT_OBS, act=DEFAULT_ACT),
-                                    n_envs=1,
+                                    n_envs=4,
                                     seed=0
                                     )
             eval_env = ProgressionAviary(obs=DEFAULT_OBS, act=DEFAULT_ACT)
@@ -123,7 +123,8 @@ def run(multiagent=DEFAULT_MA, output_folder=DEFAULT_OUTPUT_FOLDER, gui=DEFAULT_
             for j in range(data['timesteps'].shape[0]):
                 print(str(data['timesteps'][j])+","+str(data['results'][j][0]))
     else:
-        filename=os.path.join(output_folder, "save-02.19.2024_22.03.11")
+        filename=os.path.join(output_folder, "1POINT_0.25_yaw")
+        
     ############################################################
     ############################################################
     ############################################################
@@ -140,8 +141,11 @@ def run(multiagent=DEFAULT_MA, output_folder=DEFAULT_OUTPUT_FOLDER, gui=DEFAULT_
 
     #### Show (and record a video of) the model's performance ##
     if not multiagent:
-        test_env = ProgressionAviary(waypoints=np.array([[-0.2,-0.2,0.8],[-0.2,-0.2,0.5]]),
-                                     initial_xyzs=np.array([[-0.2,-0.2,0.5]]),
+        test_env = ProgressionAviary(waypoints = np.array([[0,0,1]]),
+                                     initial_xyzs=np.array([[0,0,0.95]]),
+                                     pyb_freq = 500,
+                                     ctrl_freq = 100,
+                                     initial_rpys=np.array([[0,0,np.pi/2]]),
                                      test_flag=True,
                                      gui=gui,
                                      obs=DEFAULT_OBS,
@@ -169,7 +173,7 @@ def run(multiagent=DEFAULT_MA, output_folder=DEFAULT_OUTPUT_FOLDER, gui=DEFAULT_
 
     obs, info = test_env.reset(seed=42, options={})
     start = time.time()
-    for i in range((test_env.EPISODE_LEN_SEC)*test_env.CTRL_FREQ):
+    for i in range((test_env.EPISODE_LEN_SEC+10)*test_env.CTRL_FREQ):
         action, _states = model.predict(obs,
                                         deterministic=True
                                         )

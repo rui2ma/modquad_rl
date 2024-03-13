@@ -3,10 +3,15 @@ from enum import Enum
 class DroneModel(Enum):
     """Drone models enumeration class."""
 
-    CF2X = "cf2x"   # Bitcraze Craziflie 2.0 in the X configuration
-    CF2P = "cf2p"   # Bitcraze Craziflie 2.0 in the + configuration
-    RACE = "racer"  # Racer drone in the X configuration
-    TBO = "2x1"     # 2x1 ModQuad configuration TBO: TwoByOne
+    CF2X = ("cf2x",4)   # Bitcraze Craziflie 2.0 in the X configuration
+    CF2P = ("cf2p",4)   # Bitcraze Craziflie 2.0 in the + configuration
+    RACE = ("racer",4)  # Racer drone in the X configuration
+    TBO = ("2x1",8)     # 2x1 ModQuad configuration TBO: TwoByOne
+    TBT = ("2x2",16)     # 2x2 ModQuad configuration TBO: TwoByTwo
+    TETRIS = ('tetris',16)     # ModQuad configuration TETRIS: Tetris
+    PLUS = ("plus",20)     # ModQuad configuration PLUS: Plus
+    THBTH = ("3x3",36)     # 3x3 ModQuad configuration TBO: ThreeByThree
+    FBF = ("4x4",64)     # ModQuad configuration FBF: FourByFour
 
 
 ################################################################################
